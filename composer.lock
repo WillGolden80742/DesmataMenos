@@ -4,8 +4,58 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7854cb91fa2eeb20d171a6ed16dc50cf",
+    "content-hash": "0d3503837973b490f376b0c4144b9424",
     "packages": [
+        {
+            "name": "adinan-cenci/climatempo-api",
+            "version": "4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/adinan-cenci/climatempo-api.git",
+                "reference": "26b9b042ee13fa510d43ed56e02224ed5da0f746"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/adinan-cenci/climatempo-api/zipball/26b9b042ee13fa510d43ed56e02224ed5da0f746",
+                "reference": "26b9b042ee13fa510d43ed56e02224ed5da0f746",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AdinanCenci\\Climatempo\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adinan Cenci",
+                    "email": "adinancenci@gmail.com",
+                    "role": "developer"
+                }
+            ],
+            "description": "Uma api para previsão de tempo escrita em PHP.",
+            "keywords": [
+                "api",
+                "forecast",
+                "previsão do tempo",
+                "weather"
+            ],
+            "support": {
+                "issues": "https://github.com/adinan-cenci/climatempo-api/issues",
+                "source": "https://github.com/adinan-cenci/climatempo-api/tree/master"
+            },
+            "time": "2019-12-27T10:05:01+00:00"
+        },
         {
             "name": "fabpot/goutte",
             "version": "v4.0.2",
@@ -375,16 +425,16 @@
         },
         {
             "name": "symfony/http-client",
-            "version": "v6.1.4",
+            "version": "v6.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-client.git",
-                "reference": "06dc27cbdcee26d6796c226db5266a0d58359739"
+                "reference": "565b0f2ce2c5882e89b3ef5e255d7e0478b9c675"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-client/zipball/06dc27cbdcee26d6796c226db5266a0d58359739",
-                "reference": "06dc27cbdcee26d6796c226db5266a0d58359739",
+                "url": "https://api.github.com/repos/symfony/http-client/zipball/565b0f2ce2c5882e89b3ef5e255d7e0478b9c675",
+                "reference": "565b0f2ce2c5882e89b3ef5e255d7e0478b9c675",
                 "shasum": ""
             },
             "require": {
@@ -439,7 +489,7 @@
             "description": "Provides powerful methods to fetch HTTP resources synchronously or asynchronously",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/http-client/tree/v6.1.4"
+                "source": "https://github.com/symfony/http-client/tree/v6.1.5"
             },
             "funding": [
                 {
@@ -455,7 +505,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-08-02T16:17:38+00:00"
+            "time": "2022-09-09T09:34:27+00:00"
         },
         {
             "name": "symfony/http-client-contracts",
@@ -540,16 +590,16 @@
         },
         {
             "name": "symfony/mime",
-            "version": "v6.1.4",
+            "version": "v6.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/mime.git",
-                "reference": "5d1de2d3c52f8ca469c488f4b9e007e9e9cee0b3"
+                "reference": "d521b2204f7dcebe81c1b5fb99ed70dfb6f34b4b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mime/zipball/5d1de2d3c52f8ca469c488f4b9e007e9e9cee0b3",
-                "reference": "5d1de2d3c52f8ca469c488f4b9e007e9e9cee0b3",
+                "url": "https://api.github.com/repos/symfony/mime/zipball/d521b2204f7dcebe81c1b5fb99ed70dfb6f34b4b",
+                "reference": "d521b2204f7dcebe81c1b5fb99ed70dfb6f34b4b",
                 "shasum": ""
             },
             "require": {
@@ -601,7 +651,7 @@
                 "mime-type"
             ],
             "support": {
-                "source": "https://github.com/symfony/mime/tree/v6.1.4"
+                "source": "https://github.com/symfony/mime/tree/v6.1.5"
             },
             "funding": [
                 {
@@ -617,7 +667,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-08-19T14:27:04+00:00"
+            "time": "2022-09-02T08:05:20+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",

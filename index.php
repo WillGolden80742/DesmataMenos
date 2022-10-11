@@ -1,27 +1,68 @@
-<?php 
-    include 'Controller/Sessions.php';
-    include 'Controller/HTMLFilter.php';
-?>
 <DOCTYPE html>
 <html>
 <head>
+    <style>
+        ::-webkit-scrollbar {
+            width:10px;
+            border-radius:10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background:#285d33;
+        }   
+
+        ::-webkit-scrollbar-thumb {
+            background:white;
+            border-radius:10px;
+            border:solid 1px rgba(0,0,0,0.25);
+        }
+
+        ::-webkit-scrollbar-track {
+            border-radius:10px;
+            box-shadow:inset 0px 0px 5px rgba(0,0,0,0.25);
+        }
+
+        ::-webkit-input-placeholder{
+            color: #285d33;
+            font-weight: bold;
+        }
+
+        .desmatamento { 
+            width:600px;
+            height:300px;
+            overflow-y:scroll;
+            border:solid 2px #285d33;
+            border-radius:10px;   
+        }
+        td , center { border:solid 2px #cff }
+
+    </style>    
 </head>    
 <body>
-    <?php
-    
-        #use Goutte\Client;
-        #use Symfony\Component\HttpClient\HttpClient;
-        $session = new Sessions();
-        $filter = new HTMLFilter("");
-        $site = file_get_contents("http://www.obt.inpe.br/OBT/assuntos/programas/amazonia/prodes");
-        $update = "<center>(*".$filter->getContentHTML($site,"Atualizado",")")."</center>";
-        $site = $filter->getContentHTMLByTag($site,"table class=\"plain");
-        echo $site;
-        echo $update;
 
-    ?>
+<?php 
 
+    include 'Controller/Sessions.php';
+
+    use AdinanCenci\Climatempo\Climatempo;
+
+    $token      = '9cf8b1215f87d7ac0b17a3df8062e771';
+    $id         = 3477; /*São paulo*/
+
+    $climatempo = new Climatempo($token);
+
+    $previsao   = $climatempo->fifteenDays($id);
+
+    foreach ($previsao->days as $dia) {
+        echo 
+        "Cidade: <b>$previsao->city ($dia->date)</b>: <br>
+        Temp. mínima: $dia->minTemp °C <br>
+        Temp. máxima: $dia->maxTemp °C <br>
+        Probab. de precipitação: $dia->pop % <br>
+        Precipitação: $dia->mm mm <br>
+        Frase: $dia->textPt <hr>";
+    }
+?>
 
 </body>
 </html>
-
