@@ -1,42 +1,49 @@
 <DOCTYPE html>
 <html>
 <head>
-    <style>
-        ::-webkit-scrollbar {
-            width:10px;
-            border-radius:10px;
+    <script src="assets/js/javascript.js"></script>
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/jquery.js"></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <script>
+        queimadas();
+        function queimadas () {
+            var estado = "";
+            try {
+                estado = document.getElementById('select_estado').value;
+            } catch (error) {
+                estado = "sao_paulo";
+            } 
+            $.ajax({
+                url: 'api/queimadas.php?',
+                method: 'GET',
+                data: {state: estado},
+                dataType: 'html'
+            }).done(function(text) { 
+                var text = JSON.parse(text);
+                var table = "<table>\n<thead>";
+                title = text['ANO']['1998'];
+                table += "<tr><th>Ano</th>";
+                Object.keys(title).forEach(function(item){ 
+                    table += "<th>"+item+"</th>";
+                });
+                table += "</tr>\n";
+                table += "</thead>\n<tbody>";
+                Object.keys(text['ANO']).forEach(function(item){
+                    var line = text['ANO'][item];
+                    table+="\n<tr>";
+                    table+="\n<th>"+item+"</th>\n";
+                    Object.keys(line).forEach(function(itemline){
+                        table+="\n<td>"+line[itemline]+"</td>\n";
+                    });
+                    table+="</tr>\n";
+                });
+                table+="</tbody></table>";
+                document.getElementById("desmatamentoTable").innerHTML=table;
+            });
         }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background:#285d33;
-        }   
-
-        ::-webkit-scrollbar-thumb {
-            background:white;
-            border-radius:10px;
-            border:solid 1px rgba(0,0,0,0.25);
-        }
-
-        ::-webkit-scrollbar-track {
-            border-radius:10px;
-            box-shadow:inset 0px 0px 5px rgba(0,0,0,0.25);
-        }
-
-        ::-webkit-input-placeholder{
-            color: #285d33;
-            font-weight: bold;
-        }
-
-        .desmatamento { 
-            width:600px;
-            height:300px;
-            overflow-y:scroll;
-            border:solid 2px #285d33;
-            border-radius:10px;   
-        }
-        td , center { border:solid 2px #cff }
-
-    </style>    
+    </script>    
 </head>    
 <body>
 
@@ -44,25 +51,29 @@
 
     include 'Controller/Sessions.php';
 
-    use AdinanCenci\Climatempo\Climatempo;
-
-    $token      = '9cf8b1215f87d7ac0b17a3df8062e771';
-    $id         = 3477; /*São paulo*/
-
-    $climatempo = new Climatempo($token);
-
-    $previsao   = $climatempo->fifteenDays($id);
-
-    foreach ($previsao->days as $dia) {
-        echo 
-        "Cidade: <b>$previsao->city ($dia->date)</b>: <br>
-        Temp. mínima: $dia->minTemp °C <br>
-        Temp. máxima: $dia->maxTemp °C <br>
-        Probab. de precipitação: $dia->pop % <br>
-        Precipitação: $dia->mm mm <br>
-        Frase: $dia->textPt <hr>";
-    }
+    
 ?>
+    <div class="select_estadoDIV">
+        <p> 
+            <label>Selecione o estado:</label>
+            <select id="select_estado" class="select" onchange="queimadas();">
+            <option value="">Nenhum selecionado</option>
+            <option value="acre">Acre</option><option value="alagoas">Alagoas</option><option value="amapa">Amapá</option><option value="amazonas">Amazonas</option>
+            <option value="bahia">Bahia</option><option value="ceara">Ceará</option><option value="distrito_federal">Distrito Federal</option>
+            <option value="espirito_santo">Espírito Santo</option><option value="goias">Goiás</option><option value="maranhao">Maranhão</option>
+            <option value="mato_grosso">Mato Grosso</option><option value="mato_grosso_do_sul">Mato Grosso do Sul</option>
+            <option value="minas_gerais">Minas Gerais</option><option value="para">Pará</option><option value="paraiba">Paraíba</option><option value="parana">Paraná</option>
+            <option value="pernambuco">Pernambuco</option><option value="piaui">Piauí</option><option value="rio_de_janeiro">Rio de Janeiro</option>
+            <option value="rio_grande_do_norte">Rio Grande do Norte</option><option value="rio_grande_do_sul">Rio Grande do Sul</option>
+            <option value="rondonia">Rondônia</option><option value="roraima">Roraima</option><option value="santa_catarina">Santa Catarina</option>
+            <option value="sao_paulo" selected="selected">São Paulo</option><option value="sergipe">Sergipe</option>
+            <option value="tocantins">Tocantins</option>
+            </select>
+        </p>
+    </div>
 
+    <div id="desmatamentoTable" class="desmatamentoTable">
+
+    </div>
 </body>
 </html>
