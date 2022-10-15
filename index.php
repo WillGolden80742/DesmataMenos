@@ -79,30 +79,22 @@
 
     <script>
         var mapas = "";
-        var json = "";
         function save () {
             format = document.getElementById('select_save').value;
             estado = null;
             if (format == "selecionado") {
                 estado = document.getElementById("select_state").value;
-                download (estado);
-            } else if (format == "todos") {
-                if (json == "") {
-                    download (estado);
-                } else {
-                    file(json);
-                }
             }
+            download (estado);
         }
         function download (value) {
             $.ajax({
-                    url: 'api/queimadas.php?',
-                    method: 'GET',
-                    data: { state : value},
-                    dataType: 'html'
+                url: 'api/queimadas.php?',
+                method: 'GET',
+                data: { state : value},
+                dataType: 'html'
             }).done(function(text) { 
                 file(text);
-                json = text;
             });
         }
         function file (value) {
