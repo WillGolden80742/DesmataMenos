@@ -12,7 +12,6 @@ require 'global.php';
     <script src="assets/js/jquery-3.6.0.min.js"></script>
     <script src="assets/js/jquery.js"></script>
     <link rel="stylesheet" href="assets/css/styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <script src="assets/js/jquery-3.6.0.min.js"></script>
 
 
