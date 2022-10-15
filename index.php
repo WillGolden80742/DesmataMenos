@@ -99,7 +99,7 @@ require 'global.php';
             titles = ["","","","","","","","","","","",""];
             mapas = ""; 
             select ();
-            tabela (true);
+            tabela ();
             <?php 
                 $currentURL = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
                 $arrURL = explode("/",$currentURL);
@@ -112,7 +112,7 @@ require 'global.php';
         function dados(value) {
             select_dado = document.getElementById('select_dados').value;
             if (select_dado == "tabela") {
-                tabela (false);
+                tabela ();
             } else if (select_dado == "grafico") {
                 chart();
             }
@@ -178,7 +178,7 @@ require 'global.php';
             document.getElementById("desmatamentoTable").innerHTML = "<iframe src=\""+urlCharts+"?UF="+estado+"\" style=\"border:none;\" width=\"100%\" height=\"100%\" ></iframe> ";
         }
 
-        function tabela (value) {
+        function tabela () {
             try {
                 estado = document.getElementById('select_state').value;
             } catch (error) {
