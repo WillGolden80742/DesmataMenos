@@ -18,6 +18,7 @@ require 'global.php';
     <style>
         * {
             font-size: 24px;
+            font-family:Arial, Helvetica, sans-serif;
         }
         ::-webkit-scrollbar {
             width:15px;
@@ -112,7 +113,12 @@ require 'global.php';
         function dados(value) {
             select_dado = document.getElementById('select_dados').value;
             if (select_dado == "tabela") {
-                tabela ();
+                var estado = document.getElementById("select_state").value;
+                if (estado !== "") {
+                    tabela ();
+                } else {
+                    document.getElementById('desmatamentoTable').innerHTML="<center><h1>NO CONTENT</h1></center>";
+                }
             } else if (select_dado == "grafico") {
                 chart();
             }
