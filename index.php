@@ -112,8 +112,8 @@ require 'global.php';
 
         function dados(value) {
             select_dado = document.getElementById('select_dados').value;
+            var estado = document.getElementById("select_state").value;
             if (select_dado == "tabela") {
-                var estado = document.getElementById("select_state").value;
                 if (estado !== "") {
                     tabela ();
                 } else {
