@@ -1,4 +1,0 @@
-<?php
-    require 'global.php';
-
-?>
