@@ -6,7 +6,7 @@
     <canvas id="myChart" width="400" height="220"></canvas>
     <script>
         var desmataData = [0,0,0,0,0,0,0,0,0,0,0,0,0];
-        var titles = ["","","","","","","","","","","","",""];
+        var titles = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
         var UFTitle = "";
         var tipoDado = "";
         dadosMesAMes ();
@@ -25,7 +25,6 @@
                     var index = 0;
                     Object.keys(media).forEach(function(item){ 
                         desmataData[index] = parseInt(media[item]);
-                        titles[index] = item; 
                         index++;
                     });
                 } else {
@@ -39,14 +38,8 @@
                             desmataData[index++] += parseInt(mes[itemMes]);
                         });
                     });
-                    var monthList = media['acre']['ANO']['1998'];
-                    index=0;
-                    Object.keys(monthList).forEach(function(itemMes){ 
-                        titles[index++]=itemMes;
-                    });
                 }
                 desmataData.pop();
-                titles.pop();
                 chart(desmataData,titles);
             });
         }
@@ -58,7 +51,7 @@
             }).done(function(text) { 
                 UFTitle = JSON.parse(text);
                 UFTitle = UFTitle["UF"]['<?php echo $_GET['UF'] ?>'];
-                UFTitle += " (Média) ";
+                UFTitle += " (Média)";
             });
         }        
         function chart (desmataData, titles) {
