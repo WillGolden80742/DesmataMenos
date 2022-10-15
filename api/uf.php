@@ -3,7 +3,7 @@
     header("Content-type: application/json; charset=utf-8");
     $jsonString = "{\"UF\" : {
             \"\":
-            \"Nenhum selecionado\",
+            \"Todos estados\",
             \"acre\":
             \"Acre\" ,    
             \"alagoas\":

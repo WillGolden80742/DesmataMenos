@@ -5,11 +5,12 @@
     <script src="../assets/js/jquery-3.6.0.min.js"></script>
     <canvas id="myChart" width="400" height="220"></canvas>
     <script>
-        var desmataData = [0,0,0,0,0,0,0,0,0,0,0,0];
-        var titles = ["","","","","","","","","","","",""];
+        var desmataData = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+        var titles = ["","","","","","","","","","","","",""];
         var UFTitle = "";
-        uf();
+        var tipoDado = "";
         dadosMesAMes ();
+        uf();
         function dadosMesAMes () {
             $.ajax({
                 url: 'queimadas.php?',
@@ -17,14 +18,33 @@
                 data: {state: "<?php echo $_GET['UF'] ?>" },
                 dataType: 'html'
             }).done(function(text) { 
-                var media = JSON.parse(text)['UF']["<?php echo $_GET['UF'] ?>"]['ANO']['Média*'];
-                var table;
-                var index = 0;
-                Object.keys(media).forEach(function(item){ 
-                    desmataData[index] = parseInt(media[item]);
-                    titles[index] = item; 
-                    index++;
-                });
+                var ufString = "<?php echo $_GET['UF'] ?>";
+                if (ufString !== "") {
+                    var media = JSON.parse(text)['UF'][ufString]['ANO']['Média*'];
+                    var table;
+                    var index = 0;
+                    Object.keys(media).forEach(function(item){ 
+                        desmataData[index] = parseInt(media[item]);
+                        titles[index] = item; 
+                        index++;
+                    });
+                } else {
+                    var media = JSON.parse(text)['UF'];
+                    var table;
+                    var index = 0;
+                    Object.keys(media).forEach(function(item){ 
+                        var mes = media[item]['ANO']['Média*'];
+                        index = 0;
+                        Object.keys(mes).forEach(function(itemMes){ 
+                            desmataData[index++] += parseInt(mes[itemMes]);
+                        });
+                    });
+                    var monthList = media['acre']['ANO']['1998'];
+                    index=0;
+                    Object.keys(monthList).forEach(function(itemMes){ 
+                        titles[index++]=itemMes;
+                    });
+                }
                 desmataData.pop();
                 titles.pop();
                 chart(desmataData,titles);
@@ -38,7 +58,7 @@
             }).done(function(text) { 
                 UFTitle = JSON.parse(text);
                 UFTitle = UFTitle["UF"]['<?php echo $_GET['UF'] ?>'];
-                UFTitle += " (Média)";
+                UFTitle += " (Média) ";
             });
         }        
         function chart (desmataData, titles) {

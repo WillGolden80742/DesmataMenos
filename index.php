@@ -227,7 +227,7 @@ require 'global.php';
             }  
             document.getElementById("estateMap").src=url+mapas[value];
         }
-
+        
     </script>    
 
 </head>    
