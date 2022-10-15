@@ -39,6 +39,7 @@
             }).done(function(text) { 
                 UFTitle = JSON.parse(text);
                 UFTitle = UFTitle["UF"]['<?php echo $_GET['UF'] ?>'];
+                UFTitle += " (Média)";
             });
         }        
         function chart (desmataData, titles) {
