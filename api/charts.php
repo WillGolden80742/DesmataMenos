@@ -10,7 +10,6 @@
         var UFTitle = "";
         uf();
         dadosMesAMes ();
-
         function dadosMesAMes () {
             $.ajax({
                 url: 'queimadas.php?',
