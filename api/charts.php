@@ -1,7 +1,7 @@
 <DOCTYPE html>
 <html>
 <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="../assets/js/chart.min.js"></script>
     <script src="../assets/js/jquery-3.6.0.min.js"></script>
     <canvas id="myChart" width="400" height="220"></canvas>
     <script>
