@@ -15,7 +15,7 @@ require 'global.php';
 
     <style>
         * {
-            font-size: 32px;
+            font-size: 18px;
             font-family:Arial, Helvetica, sans-serif;
         }
         ::-webkit-scrollbar {
@@ -82,7 +82,7 @@ require 'global.php';
         .desmatamentoTable, .estateMap {
             float: left;
             top: 0;
-            height:83%;
+            height:87%;
         }
         
     </style>    
