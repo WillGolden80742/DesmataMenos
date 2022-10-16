@@ -220,12 +220,12 @@ require 'global.php';
                         var tdColor = "";
                         if (item == "Máximo*") {
                             maxArr.push(IDLine);
-                            tdColor="style=\"background-color:rgba(255,0,0,0.5);\"";
+                            tdColor="style=\"background-color:rgba(255,0,0,0.25);\"";
                         } else if (item == "Mínimo*"){
                             minArr.push(IDLine);      
-                            tdColor="style=\"background-color:rgba(0,0,255,0.5);\"";                      
+                            tdColor="style=\"background-color:rgba(0,0,255,0.25);\"";                      
                         } else if (item == "Média*"){   
-                            tdColor="style=\"background-color:rgba(255,255,0,0.5);\"";                      
+                            tdColor="style=\"background-color:rgba(255,255,0,0.25);\"";                      
                         } 
                         table+="\n<td id=\""+IDLine+"\" "+tdColor+" >"+line[itemline]+"</td>\n";
                         countLine++;
@@ -236,8 +236,8 @@ require 'global.php';
                 document.getElementById("desmatamentoTable").innerHTML=table;
                 console.log (maxArr);
                 for(let i = 0; i < maxArr.length; i++ ) {
-                    document.getElementById(maxArr[i]).style.backgroundColor = "rgba(255,0,0,0.5)";
-                    document.getElementById(minArr[i]).style.backgroundColor = "rgba(0,0,255,0.5)";                   
+                    document.getElementById(maxArr[i]).style.backgroundColor = "rgba(255,0,0,0.25)";
+                    document.getElementById(minArr[i]).style.backgroundColor = "rgba(0,0,255,0.25)";                   
                 }
             });
         }
