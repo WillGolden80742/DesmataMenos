@@ -194,7 +194,6 @@ require 'global.php';
         function chart () {
             estado = document.getElementById('select_state').value;
             dado = document.getElementById('select_grafico_dados').value;
-            alert ("\""+urlCharts+"/locale/"+estado+"/dado/"+dado+"\" ");
             document.getElementById("desmatamentoTable").innerHTML = "<iframe src=\""+urlCharts+"/locale/"+estado+"/dado/"+dado+"\" style=\"border:none;\" width=\"100%\" height=\"100%\" ></iframe> ";
         }
 

@@ -4,6 +4,12 @@
     } else {
         $dado = "Média*";
     }
+    $state = $_GET['state'];
+    if (strcmp($_GET['state'],'dado') == 0) {
+        $state = "";
+    } else {
+        $state = $_GET['state'];
+    }
 ?>
 <DOCTYPE html>  
 <html>
@@ -20,12 +26,12 @@
         uf();
         function dadosMesAMes () {
             $.ajax({
-                url: 'queimadas.php?',
+                url: 'queimadas.php',
                 method: 'GET',
-                data: {state: "<?php echo $_GET['state'] ?>" },
+                data: {state: "<?php echo $state ?>" },
                 dataType: 'html'
             }).done(function(text) { 
-                var ufString = "<?php echo $_GET['state'] ?>";
+                var ufString = "<?php echo $state ?>";
                 if (ufString !== "") {
                     var media = JSON.parse(text)['UF'][ufString]['ANO']['<?php echo $dado; ?>'];
                     var table;
@@ -58,7 +64,7 @@
                 dataType: 'html'
             }).done(function(text) { 
                 UFTitle = JSON.parse(text);
-                UFTitle = UFTitle["UF"]['<?php echo $_GET['state'] ?>'];
+                UFTitle = UFTitle["UF"]['<?php echo $state ?>'];
                 UFTitle += " (<?php echo $dado; ?>)";
             });
         }        

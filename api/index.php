@@ -45,7 +45,7 @@
         <h1>Mapas</h1>
         <hr>
         <h3> 
-            mapas/ - Acesse os valores de url de google mapas das unidades federativas
+            mapas/ - Acesse os valores de url (https://google.com/maps/embed?pb=) de google mapas das unidades federativas
         </h3>    
         <hr>
         <h3>         
@@ -121,10 +121,10 @@
         $urlArr = explode("/",$_GET['url']);
         $count = 0;
         
-        $urlArr[0]=strtolower($url);
-        $urlArr[1]=strtolower($url);
-        $urlArr[2]=strtolower($url);
-        $urlArr[3]=strtolower($url);
+        $urlArr[0]=strtolower($urlArr[0]);
+        $urlArr[1]=strtolower($urlArr[1]);
+        $urlArr[2]=strtolower($urlArr[2]);
+        $urlArr[3]=strtolower($urlArr[3]);
 
         switch ($urlArr[0]) {
             case "grafico":
