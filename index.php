@@ -3,8 +3,8 @@
 
 require 'global.php';
 
-
 ?>
+
 <DOCTYPE html>
 <html>
 <head>
@@ -77,12 +77,16 @@ require 'global.php';
             background-color: rgb(40, 93, 51);
             padding: 2px;
             border-radius:10px;
+            box-shadow: 0px 0px 10px rgb(0 0 0 / 25%);
         }
 
         .desmatamentoTable, .estateMap {
             float: left;
             top: 0;
-            height:86%;
+            height:86%;    
+        }
+        .desmatamentoTable {
+            box-shadow: inset 0px 0px 20px rgb(0,0,0,1);
         }
         
     </style>    
@@ -133,7 +137,7 @@ require 'global.php';
 
         function select () {
             $.ajax({
-                url: 'api/uf.php?',
+                url: 'api/uf',
                 method: 'GET',
                 dataType: 'html'
             }).done(function(text) { 

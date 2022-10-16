@@ -1,5 +1,5 @@
 <?php  
-    if (isset($_GET['dado'])){  
+    if (isset($_GET['dado']) && strcmp($_GET['dado'],"") !== 0){ 
         $dado = $_GET['dado'];
     } else {
         $dado = "Média*";
