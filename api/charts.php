@@ -42,7 +42,8 @@
                         var mes = media[item]['ANO']['<?php echo $dado; ?>'];
                         index = 0;
                         Object.keys(mes).forEach(function(itemMes){ 
-                            desmataData[index++] += parseInt(mes[itemMes]);
+                            number = mes[itemMes].replace("-","0");
+                            desmataData[index++] += parseInt(number);
                         });
                     });
                 }
