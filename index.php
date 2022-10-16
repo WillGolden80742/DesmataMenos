@@ -69,7 +69,7 @@ require 'global.php';
 
 
         .select_state, .select_save, .select_dados {
-            color: #fff;
+            color: #fff ;
             border:solid 2px rgb(40, 93, 51);
             background: none;
             background-color: rgb(40, 93, 51);
@@ -226,9 +226,7 @@ require 'global.php';
                             tdColor="style=\"background-color:rgba(0,0,255,0.5);\"";                      
                         } else if (item == "Média*"){   
                             tdColor="style=\"background-color:rgba(255,255,0,0.5);\"";                      
-                        } else {
-                            tdColor="";
-                        }
+                        } 
                         table+="\n<td id=\""+IDLine+"\" "+tdColor+" >"+line[itemline]+"</td>\n";
                         countLine++;
                     });
