@@ -82,7 +82,7 @@ require 'global.php';
         .desmatamentoTable, .estateMap {
             float: left;
             top: 0;
-            height:87%;
+            height:86%;
         }
         
     </style>    
