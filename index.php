@@ -8,9 +8,7 @@ require 'global.php';
 <DOCTYPE html>
 <html>
 <head>
-    <script src="assets/js/javascript.js"></script>
     <script src="assets/js/jquery-3.6.0.min.js"></script>
-    <script src="assets/js/jquery.js"></script>
     <link rel="stylesheet" href="assets/css/styles.css">
     <script src="assets/js/jquery-3.6.0.min.js"></script>
 
@@ -93,6 +91,7 @@ require 'global.php';
         var mapas = "";
         var urlCharts = "";
         var estado = "";
+        var estadoDefault = "sao_paulo";
 
         init ();
         function init () {
@@ -138,7 +137,7 @@ require 'global.php';
                 var select = "";
                 document.getElementById("select_state").innerHTML = "";
                 Object.keys(uf).forEach(function(item){ 
-                    if (item == "sao_paulo") {
+                    if (item == estadoDefault) {
                         select = "selected=\"selected\"";
                     } else {
                         select = "";
@@ -174,7 +173,11 @@ require 'global.php';
             var url = window.URL.createObjectURL(myBlob);
             var anchor = document.createElement("a");
             anchor.href = url;
-            anchor.download = "queimadas.json";
+            var estado = "";
+            if (document.getElementById("select_save").selectedIndex == 1) {
+                estado = "_"+document.getElementById('select_state').value;
+            } 
+            anchor.download = "queimadas"+estado+".json";
             anchor.click();
             document.getElementById("select_save").selectedIndex = 0;
         }
@@ -188,7 +191,7 @@ require 'global.php';
             try {
                 estado = document.getElementById('select_state').value;
             } catch (error) {
-                estado = "sao_paulo";
+                estado =estadoDefault;
             } 
             $.ajax({
                 url: 'api/queimadas.php?',
