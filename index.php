@@ -113,7 +113,7 @@ require 'global.php';
                 $sizeArrURL = count ($arrURL)-1;
                 $currentURL = str_replace($arrURL[$sizeArrURL],"",$currentURL);
             ?>
-            urlCharts = "<?php echo $currentURL ?>"+"api/charts.php";
+            urlCharts = "<?php echo $currentURL ?>"+"api/grafico";
         } 
 
         function dados(value) {
@@ -194,7 +194,8 @@ require 'global.php';
         function chart () {
             estado = document.getElementById('select_state').value;
             dado = document.getElementById('select_grafico_dados').value;
-            document.getElementById("desmatamentoTable").innerHTML = "<iframe src=\""+urlCharts+"?UF="+estado+"&dado="+dado+"\" style=\"border:none;\" width=\"100%\" height=\"100%\" ></iframe> ";
+            alert ("\""+urlCharts+"/locale/"+estado+"/dado/"+dado+"\" ");
+            document.getElementById("desmatamentoTable").innerHTML = "<iframe src=\""+urlCharts+"/locale/"+estado+"/dado/"+dado+"\" style=\"border:none;\" width=\"100%\" height=\"100%\" ></iframe> ";
         }
 
         function tabela () {

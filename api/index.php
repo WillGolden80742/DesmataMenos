@@ -120,11 +120,11 @@
 
         $urlArr = explode("/",$_GET['url']);
         $count = 0;
-
-        foreach ($urlArr  as $url) {
-            $urlArr[$count]=strtolower($url);
-            $count++;
-        }
+        
+        $urlArr[0]=strtolower($url);
+        $urlArr[1]=strtolower($url);
+        $urlArr[2]=strtolower($url);
+        $urlArr[3]=strtolower($url);
 
         switch ($urlArr[0]) {
             case "grafico":

@@ -22,10 +22,10 @@
             $.ajax({
                 url: 'queimadas.php?',
                 method: 'GET',
-                data: {state: "<?php echo $_GET['UF'] ?>" },
+                data: {state: "<?php echo $_GET['state'] ?>" },
                 dataType: 'html'
             }).done(function(text) { 
-                var ufString = "<?php echo $_GET['UF'] ?>";
+                var ufString = "<?php echo $_GET['state'] ?>";
                 if (ufString !== "") {
                     var media = JSON.parse(text)['UF'][ufString]['ANO']['<?php echo $dado; ?>'];
                     var table;
@@ -58,7 +58,7 @@
                 dataType: 'html'
             }).done(function(text) { 
                 UFTitle = JSON.parse(text);
-                UFTitle = UFTitle["UF"]['<?php echo $_GET['UF'] ?>'];
+                UFTitle = UFTitle["UF"]['<?php echo $_GET['state'] ?>'];
                 UFTitle += " (<?php echo $dado; ?>)";
             });
         }        
