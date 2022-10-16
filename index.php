@@ -15,7 +15,7 @@ require 'global.php';
 
     <style>
         * {
-            font-size: 24px;
+            font-size: 32px;
             font-family:Arial, Helvetica, sans-serif;
         }
         ::-webkit-scrollbar {
@@ -50,6 +50,9 @@ require 'global.php';
             border-radius:10px;   
         }
         td , center { border:solid 2px #cff }
+        th, td {
+            padding:5px;
+        }
 
         .desmatamentoTable {
             width: 67%;
@@ -67,8 +70,7 @@ require 'global.php';
             display: inline-table;
         }
 
-
-        .select_state, .select_save, .select_dados {
+        .select_state, .select_save, .select_dados, .select_grafico_dados {
             color: #fff ;
             border:solid 2px rgb(40, 93, 51);
             background: none;
@@ -119,8 +121,10 @@ require 'global.php';
                 } else {
                     document.getElementById('desmatamentoTable').innerHTML="<center><h1>NO CONTENT</h1></center>";
                 }
+                document.getElementById('select_grafico_dados').disabled = true;
             } else if (select_dado == "grafico") {
                 chart();
+                document.getElementById('select_grafico_dados').disabled = false;
             }
             if (value) {
                 mapRefresh(estado);
@@ -135,15 +139,15 @@ require 'global.php';
             }).done(function(text) { 
                 var uf = JSON.parse(text)['UF'];
                 var options = "";
-                var select = "";
+                var selected = "";
                 document.getElementById("select_state").innerHTML = "";
                 Object.keys(uf).forEach(function(item){ 
                     if (item == estadoDefault) {
-                        select = "selected=\"selected\"";
+                        selected = "selected=\"selected\"";
                     } else {
-                        select = "";
+                        selected = "";
                     }
-                    options += "<option value=\""+item+"\" "+select+" >"+uf[item]+"</option>";
+                    options += "<option value=\""+item+"\" "+selected+" >"+uf[item]+"</option>";
                 });
                 document.getElementById("select_state").innerHTML = options;
             });
@@ -185,7 +189,8 @@ require 'global.php';
 
         function chart () {
             estado = document.getElementById('select_state').value;
-            document.getElementById("desmatamentoTable").innerHTML = "<iframe src=\""+urlCharts+"?UF="+estado+"\" style=\"border:none;\" width=\"100%\" height=\"100%\" ></iframe> ";
+            dado = document.getElementById('select_grafico_dados').value;
+            document.getElementById("desmatamentoTable").innerHTML = "<iframe src=\""+urlCharts+"?UF="+estado+"&dado="+dado+"\" style=\"border:none;\" width=\"100%\" height=\"100%\" ></iframe> ";
         }
 
         function tabela () {
@@ -202,18 +207,27 @@ require 'global.php';
             }).done(function(text) { 
                 var text = JSON.parse(text)['UF'][estado];
                 var table = "<table>\n<thead>";
+                var thStyle = "style=\"background-color:rgba(40, 93, 51,0.25);\"";
                 title = text['ANO']['1998'];
-                table += "<tr><th>Ano</th>";
+                table += "<tr><th "+thStyle+">Ano</th>";
                 Object.keys(title).forEach(function(item){ 
-                    table += "<th>"+item+"</th>";
+                    table += "<th "+thStyle+">"+item+"</th>";
                 });
                 table += "</tr>\n";
                 table += "</thead>\n<tbody>";
                 var maxArr = [], minArr = [];
+                document.getElementById('select_grafico_dados').innerHTML="";
                 Object.keys(text['ANO']).forEach(function(item){
                     var line = text['ANO'][item];
                     table+="\n<tr>";
-                    table+="\n<th>"+item+"</th>\n";
+                    table+="\n<th "+thStyle+" >"+item+"</th>\n";
+                    var selected = "";
+                    if (item == "Média*") {
+                        selected = "selected=\"selected\"";
+                    } else {
+                        selected = "";
+                    }
+                    document.getElementById('select_grafico_dados').innerHTML+="<option value=\""+item+"\" "+selected+" >"+item+"</option>";
                     var countLine = 0;
                     Object.keys(line).forEach(function(itemline){
                         var IDLine = "line"+countLine+line[itemline];
@@ -271,6 +285,10 @@ require 'global.php';
             <select id="select_dados" class="select_dados" onchange="dados();">
                 <option value="tabela">Tabela</option>
                 <option value="grafico">Gráfico</option>
+            </select>
+
+            <select id="select_grafico_dados" class="select_grafico_dados" onchange="dados();" disabled>
+                
             </select>
 
             <select id="select_save" class="select_save" onchange="save();">

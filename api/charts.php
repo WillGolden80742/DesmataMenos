@@ -1,4 +1,11 @@
-<DOCTYPE html>
+<?php  
+    if (isset($_GET['dado'])){  
+        $dado = $_GET['dado'];
+    } else {
+        $dado = "Média*";
+    }
+?>
+<DOCTYPE html>  
 <html>
 <head>
     <script src="../assets/js/chart.min.js"></script>
@@ -20,7 +27,7 @@
             }).done(function(text) { 
                 var ufString = "<?php echo $_GET['UF'] ?>";
                 if (ufString !== "") {
-                    var media = JSON.parse(text)['UF'][ufString]['ANO']['Média*'];
+                    var media = JSON.parse(text)['UF'][ufString]['ANO']['<?php echo $dado; ?>'];
                     var table;
                     var index = 0;
                     Object.keys(media).forEach(function(item){ 
@@ -32,7 +39,7 @@
                     var table;
                     var index = 0;
                     Object.keys(media).forEach(function(item){ 
-                        var mes = media[item]['ANO']['Média*'];
+                        var mes = media[item]['ANO']['<?php echo $dado; ?>'];
                         index = 0;
                         Object.keys(mes).forEach(function(itemMes){ 
                             desmataData[index++] += parseInt(mes[itemMes]);
@@ -51,7 +58,7 @@
             }).done(function(text) { 
                 UFTitle = JSON.parse(text);
                 UFTitle = UFTitle["UF"]['<?php echo $_GET['UF'] ?>'];
-                UFTitle += " (Média)";
+                UFTitle += " (<?php echo $dado; ?>)";
             });
         }        
         function chart (desmataData, titles) {
