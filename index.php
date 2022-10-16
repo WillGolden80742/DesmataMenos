@@ -26,7 +26,7 @@ require 'global.php';
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background:#285d33;
+            background:rgb(40, 93, 51);
         }   
 
         ::-webkit-scrollbar-thumb {
@@ -41,14 +41,14 @@ require 'global.php';
         }
 
         ::-webkit-input-placeholder{
-            color: #285d33;
+            color: rgb(40, 93, 51);
             font-weight: bold;
         }
         .desmatamento { 
             width:600px;
             height:300px;
             overflow-y:scroll;
-            border:solid 2px #285d33;
+            border:solid 2px rgb(40, 93, 51);
             border-radius:10px;   
         }
         td , center { border:solid 2px #cff }
@@ -56,24 +56,24 @@ require 'global.php';
         .desmatamentoTable {
             width: 67%;
             border-radius:10px;
-            border:solid 2px #285d33;
+            border:solid 2px rgb(40, 93, 51);
             overflow-y: scroll;
         }
 
         .estateMap {
-            background-color: #285d33;
+            background-color: rgb(40, 93, 51);
             width: 30%; 
             margin-left:10px;
             border-radius:10px;
-            border:solid 2px #285d33;
+            border:solid 2px rgb(40, 93, 51);
             display: inline-table;
         }
 
 
         .select_state, .select_save, .select_dados {
-            border:solid 2px #285d33;
+            border:solid 2px rgb(40, 93, 51);
             background: none;
-            background-color: #285d33;
+            background-color: rgb(40, 93, 51);
             padding: 2px;
             border-radius:10px;
         }
@@ -205,17 +205,38 @@ require 'global.php';
                 });
                 table += "</tr>\n";
                 table += "</thead>\n<tbody>";
+                var maxArr = [], minArr = [];
                 Object.keys(text['ANO']).forEach(function(item){
                     var line = text['ANO'][item];
                     table+="\n<tr>";
                     table+="\n<th>"+item+"</th>\n";
+                    var countLine = 0;
                     Object.keys(line).forEach(function(itemline){
-                        table+="\n<td>"+line[itemline]+"</td>\n";
+                        var IDLine = "line"+countLine+line[itemline];
+                        var tdColor = "";
+                        if (item == "Máximo*") {
+                            maxArr.push(IDLine);
+                            tdColor="style=\"background-color:rgba(255,0,0,0.5);\"";
+                        } else if (item == "Mínimo*"){
+                            minArr.push(IDLine);      
+                            tdColor="style=\"background-color:rgba(0,0,255,0.5);\"";                      
+                        } else if (item == "Média*"){   
+                            tdColor="style=\"background-color:rgba(255,255,0,0.5);\"";                      
+                        } else {
+                            tdColor="";
+                        }
+                        table+="\n<td id=\""+IDLine+"\" "+tdColor+" >"+line[itemline]+"</td>\n";
+                        countLine++;
                     });
                     table+="</tr>\n";
                 });
                 table+="</tbody></table>";
                 document.getElementById("desmatamentoTable").innerHTML=table;
+                console.log (maxArr);
+                for(let i = 0; i < maxArr.length; i++ ) {
+                    document.getElementById(maxArr[i]).style.backgroundColor = "rgba(255,0,0,0.5)";
+                    document.getElementById(minArr[i]).style.backgroundColor = "rgba(0,0,255,0.5)";                   
+                }
             });
         }
 
