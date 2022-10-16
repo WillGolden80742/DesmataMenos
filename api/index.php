@@ -7,10 +7,10 @@
             color:rgb(50,50,50);
         }
         .apiTutorial {
-            padding-left:100px;
-            padding-right:100px;
-            margin-left:200px;
-            margin-right:200px;
+            padding-left:7%;
+            padding-right:7%;
+            margin-left:15%;
+            margin-right:15%;
             border:solid 2px rgb(122, 122,122);
             box-shadow: 0px 0px 10px rgba(0,0,0,0.25);
         }
@@ -21,19 +21,19 @@
         <h1>Queimadas</h1>
         <hr>
         <h3> 
-            queimadas/ - Acesse todos dados de queimadas  
+            queimadas/ - Acesse queimadas do Brasil inteiro
         </h3>
         <h3> 
-            queimadas/locale/ - Acesse dados de queimadas filtrados por estados 
+            queimadas/locale/ - Acesse dados de queimadas filtrado por estado 
         </h3>
         <hr>
         <h1>Gráficos</h1>
         <hr>
         <h3> 
-            grafico/ - Acesse todos grafico de queimadas  
+            grafico/ - Acesse grafico de queimadas do Brasil inteiro  
         </h3>
         <h3> 
-            grafico/locale/ - Acesse dados de grafico filtrados por estados 
+            grafico/locale/ - Acesse grafico sobre queimadas filtrado por estado 
         </h3>
         <hr>
         <h3> 
@@ -45,7 +45,7 @@
         <h1>Mapas</h1>
         <hr>
         <h3> 
-            mapas/ - Acesse os valores de url de mapas das unidades federativas
+            mapas/ - Acesse os valores de url de google mapas das unidades federativas
         </h3>    
         <hr>
         <h3>         
