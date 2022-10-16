@@ -69,6 +69,7 @@ require 'global.php';
 
 
         .select_state, .select_save, .select_dados {
+            color: #fff;
             border:solid 2px rgb(40, 93, 51);
             background: none;
             background-color: rgb(40, 93, 51);
