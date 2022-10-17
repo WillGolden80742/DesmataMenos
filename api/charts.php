@@ -59,7 +59,7 @@
                 dataType: 'html'
             }).done(function(text) { 
                 UFTitle = JSON.parse(text);
-                UFTitle = UFTitle["UF"]['<?php echo $state ?>'];
+                UFTitle = '<?php echo $_GET['state']; ?>';
                 UFTitle += " (total ano a ano km²)";
             });
         }        
