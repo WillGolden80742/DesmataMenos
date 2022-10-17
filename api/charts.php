@@ -1,9 +1,4 @@
 <?php  
-    if (isset($_GET['dado']) && strcmp($_GET['dado'],"") !== 0){ 
-        $dado = $_GET['dado'];
-    } else {
-        $dado = "Média*";
-    }
     $state = $_GET['state'];
     if (strcmp($_GET['state'],'dado') == 0) {
         $state = "";
@@ -18,8 +13,6 @@
     <script src="../assets/js/jquery-3.6.0.min.js"></script>
     <canvas id="myChart" width="400" height="220"></canvas>
     <script>
-        var desmataData = [0,0,0,0,0,0,0,0,0,0,0,0,0];
-        var titles = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
         var UFTitle = "";
         var tipoDado = "";
         dadosMesAMes ();
@@ -31,47 +24,34 @@
                 data: {state: "<?php echo $state ?>" },
                 dataType: 'html'
             }).done(function(text) { 
-                var ufString = "<?php echo $state ?>";
-                if (ufString !== "") {
-                    var media = JSON.parse(text)['UF'][ufString]['ANO']['<?php echo $dado; ?>'];
-                    var table;
-                    var index = 0;
-                    Object.keys(media).forEach(function(item){ 
-                        desmataData[index] = parseInt(media[item]);
-                        index++;
-                    });
-                } else {
-                    var json = JSON.parse(text);
-                    desmataData = [];
-                    titles = [];
-                    Object.keys(json['UF']['acre']['ANO']).forEach(function(itemline){
-                        somaEstado = 0;
-                        Object.keys(json['UF']).forEach(function(uf){
-                            if (itemline != "Máximo*" && itemline != "Média*" && itemline != "Mínimo*") {
-                                total = json['UF'][uf]['ANO'][itemline]['Total'].replace('-','');
-                                somaEstado+=parseInt(total);
-                            }
-                        });    
-                        desmataData.push(somaEstado);
-                        titles.push(itemline);
-                    });   
-                    desmataData.pop();
-                    desmataData.pop();
-                    titles.pop();
-                    titles.pop();
-                    titles.pop();
-                }
+                var json = JSON.parse(text);
+                var desmataData = [];
+                var titles = [];
+                var firstUF = "";
+                Object.keys(json['UF']).forEach(function(uf){
+                    firstUF = uf;
+                    return true;
+                });   
+                Object.keys(json['UF'][firstUF]['ANO']).forEach(function(itemline){
+                    somaEstado = 0;
+                    Object.keys(json['UF']).forEach(function(uf){
+                        if (itemline != "Máximo*" && itemline != "Média*" && itemline != "Mínimo*") {
+                            total = json['UF'][uf]['ANO'][itemline]['Total'].replace('-','');
+                            somaEstado+=parseInt(total);
+                        }
+                    });    
+                    desmataData.push(somaEstado);
+                    titles.push(itemline);
+                });   
+                desmataData.pop();
+                desmataData.pop();
+                titles.pop();
+                titles.pop();
+                titles.pop();
                 desmataData.pop();
                 chart(desmataData,titles);
             });
-        }
-        <?php 
-            if (strcmp($_GET['state'],'dado') == 0) {
-                $label = "total ano a ano km²";
-            } else {
-                $label = $dado;
-            }
-        ?>
+        }   
         function uf () {
             $.ajax({
                 url: 'uf.php?',
@@ -80,7 +60,7 @@
             }).done(function(text) { 
                 UFTitle = JSON.parse(text);
                 UFTitle = UFTitle["UF"]['<?php echo $state ?>'];
-                UFTitle += " (<?php echo $label ?>)";
+                UFTitle += " (total ano a ano km²)";
             });
         }        
         function chart (desmataData, titles) {

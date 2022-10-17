@@ -70,7 +70,7 @@ require 'global.php';
             display: inline-table;
         }
 
-        .select_state, .select_save, .select_dados, .select_grafico_dados {
+        .select_state, .select_save, .select_dados {
             color: #fff ;
             border:solid 2px rgb(40, 93, 51);
             background: none;
@@ -124,59 +124,14 @@ require 'global.php';
             select_dado = document.getElementById('select_dados').value;
             var estado = document.getElementById("select_state").value;
             if (select_dado == "tabela") {
+                loading ();
                 if (estado !== "") {
                     tabela ();
                 } else {
-                    var table = "";
-                    var thStyle = "style=\"background-color:rgba(40, 93, 51,0.25);\"";
-                    $.ajax({
-                        url: 'api/queimadas.php',
-                        method: 'GET',
-                        dataType: 'html'
-                    }).done(function(text) { 
-                        var json = JSON.parse(text);
-                        thead="";
-                        table += "<table></thead><tr><th "+thStyle +">ano</th>#thead</tr></thead><tbody>#tbody</tbody></table>";
-                        tbody="";
-                        var maxArr = [], minArr = [];
-                        Object.keys(json['UF']).forEach(function(uf){
-                                thead += "<th "+thStyle +">"+uf+"</th>";
-                        }); 
-                        Object.keys(json['UF']['acre']['ANO']).forEach(function(itemline){
-                            somaEstado = 0;
-                            tbody+="<tr><th "+thStyle +" >"+itemline+"</th>";
-                            tdColor="";
-                            countLine=0;
-                            Object.keys(json['UF']).forEach(function(uf){
-                                total = json['UF'][uf]['ANO'][itemline]['Total'].replace('-','');
-                                var IDLine = "line"+(countLine++)+total;
-                                if (itemline == "Máximo*") {
-                                    tdColor="style=\"background-color:rgba(255,0,0,0.25);\"";
-                                    maxArr.push(IDLine);
-                                } else if (itemline == "Mínimo*"){    
-                                    tdColor="style=\"background-color:rgba(0,0,255,0.25);\""; 
-                                    minArr.push(IDLine);                     
-                                } else if (itemline == "Média*"){   
-                                    tdColor="style=\"background-color:rgba(255,255,0,0.25);\"";                      
-                                } 
-                                tbody+="<td "+tdColor+" id=\""+IDLine+"\" >"+total+"</td>"; 
-                            }); 
-                            tbody+="</tr>";  
-                        });  
-                        table=table.replace("#thead",thead);
-                        table=table.replace("#tbody",tbody);
-                        setTable(table);
-                        for(let i = 0; i < maxArr.length; i++ ) {
-                            document.getElementById(maxArr[i]).style.backgroundColor = "rgba(255,0,0,0.25)";
-                            document.getElementById(minArr[i]).style.backgroundColor = "rgba(0,0,255,0.25)";                   
-                        }
-                    });                    
-                    //document.getElementById('desmatamentoTable').innerHTML="<center><h1>NO CONTENT</h1></center>";
+                    tabelaTodosEstado();
                 }
-                document.getElementById('select_grafico_dados').disabled = true;
             } else if (select_dado == "grafico") {
                 chart();
-                document.getElementById('select_grafico_dados').disabled = false;
             }
             if (value) {
                 mapRefresh(estado);
@@ -241,9 +196,60 @@ require 'global.php';
 
         function chart () {
             estado = document.getElementById('select_state').value;
-            dado = document.getElementById('select_grafico_dados').value;
-            document.getElementById("desmatamentoTable").innerHTML = "<iframe src=\""+urlCharts+"/locale/"+estado+"/dado/"+dado+"\" style=\"border:none;\" width=\"100%\" height=\"100%\" ></iframe> ";
+            document.getElementById("desmatamentoTable").innerHTML = "<iframe src=\""+urlCharts+"/locale/"+estado+"\" style=\"border:none;\" width=\"100%\" height=\"100%\" ></iframe> ";
         }
+
+        function loading () {
+            document.getElementById('desmatamentoTable').innerHTML="<center style=\"background-color:rgba(255,255,255,1);\" ><h1><img src=\"assets/images/loading.gif\" height=20px /></h1></center>";  
+        } 
+
+        function tabelaTodosEstado () {           
+            var table = "";
+            var thStyle = "style=\"background-color:rgba(40, 93, 51,0.25);\"";
+            $.ajax({
+                url: 'api/queimadas.php',
+                method: 'GET',
+                dataType: 'html'
+            }).done(function(text) { 
+                var json = JSON.parse(text);
+                thead="";
+                table += "<table></thead><tr><th "+thStyle +">Ano</th>#thead</tr></thead><tbody>#tbody</tbody></table>";
+                tbody="";
+                var maxArr = [], minArr = [];
+                Object.keys(json['UF']).forEach(function(uf){
+                        thead += "<th "+thStyle +">"+uf+"</th>";
+                }); 
+                Object.keys(json['UF']['acre']['ANO']).forEach(function(itemline){
+                    somaEstado = 0;
+                    tbody+="<tr><th "+thStyle +" >"+itemline+"</th>";
+                    tdColor="";
+                    countLine=0;
+                    Object.keys(json['UF']).forEach(function(uf){
+                        total = json['UF'][uf]['ANO'][itemline]['Total'].replace('-','');
+                        var IDLine = "line"+(countLine++)+total;
+                        if (itemline == "Máximo*") {
+                            tdColor="style=\"background-color:rgba(255,0,0,0.25);\"";
+                            maxArr.push(IDLine);
+                        } else if (itemline == "Mínimo*"){    
+                            tdColor="style=\"background-color:rgba(0,0,255,0.25);\""; 
+                            minArr.push(IDLine);                     
+                        } else if (itemline == "Média*"){   
+                            tdColor="style=\"background-color:rgba(255,255,0,0.25);\"";                      
+                        } 
+                        tbody+="<td "+tdColor+" id=\""+IDLine+"\" >"+total+"</td>"; 
+                    }); 
+                    tbody+="</tr>";  
+                });  
+                table=table.replace("#thead",thead);
+                table=table.replace("#tbody",tbody);
+                setTable(table);
+                for(let i = 0; i < maxArr.length; i++ ) {
+                    document.getElementById(maxArr[i]).style.backgroundColor = "rgba(255,0,0,0.25)";
+                    document.getElementById(minArr[i]).style.backgroundColor = "rgba(0,0,255,0.25)";                   
+                }
+            });                    
+            //document.getElementById('desmatamentoTable').innerHTML="<center><h1>NO CONTENT</h1></center>";            
+        } 
 
         function tabela () {
             try {
@@ -268,7 +274,6 @@ require 'global.php';
                 table += "</tr>\n";
                 table += "</thead>\n<tbody>";
                 var maxArr = [], minArr = [];
-                document.getElementById('select_grafico_dados').innerHTML="";
                 Object.keys(text['ANO']).forEach(function(item){
                     var line = text['ANO'][item];
                     table+="\n<tr>";
@@ -279,7 +284,6 @@ require 'global.php';
                     } else {
                         selected = "";
                     }
-                    document.getElementById('select_grafico_dados').innerHTML+="<option value=\""+item+"\" "+selected+" >"+item+"</option>";
                     var countLine = 0;
                     Object.keys(line).forEach(function(itemline){
                         var IDLine = "line"+countLine+line[itemline];
@@ -337,10 +341,6 @@ require 'global.php';
             <select id="select_dados" class="select_dados" onchange="dados();">
                 <option value="tabela">Tabela</option>
                 <option value="grafico">Gráfico</option>
-            </select>
-
-            <select id="select_grafico_dados" class="select_grafico_dados" onchange="dados();" disabled>
-                
             </select>
 
             <select id="select_save" class="select_save" onchange="save();">
