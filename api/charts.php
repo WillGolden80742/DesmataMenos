@@ -1,10 +1,5 @@
 <?php  
     $state = $_GET['state'];
-    if (strcmp($_GET['state'],'dado') == 0) {
-        $state = "";
-    } else {
-        $state = $_GET['state'];
-    }
 ?>
 <DOCTYPE html>  
 <html>
@@ -59,7 +54,7 @@
                 dataType: 'html'
             }).done(function(text) { 
                 UFTitle = JSON.parse(text);
-                UFTitle = '<?php echo $_GET['state']; ?>';
+                UFTitle = '<?php echo $state; ?>';
                 UFTitle += " (total ano a ano km²)";
             });
         }        
