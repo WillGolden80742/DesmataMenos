@@ -138,6 +138,7 @@ require 'global.php';
                         thead="";
                         table += "<table></thead><tr><th "+thStyle +">ano</th>#thead</tr></thead><tbody>#tbody</tbody></table>";
                         tbody="";
+                        var maxArr = [], minArr = [];
                         Object.keys(json['UF']).forEach(function(uf){
                                 thead += "<th "+thStyle +">"+uf+"</th>";
                         }); 
@@ -145,22 +146,30 @@ require 'global.php';
                             somaEstado = 0;
                             tbody+="<tr><th "+thStyle +" >"+itemline+"</th>";
                             tdColor="";
+                            countLine=0;
                             Object.keys(json['UF']).forEach(function(uf){
+                                total = json['UF'][uf]['ANO'][itemline]['Total'].replace('-','');
+                                var IDLine = "line"+(countLine++)+total;
                                 if (itemline == "Máximo*") {
                                     tdColor="style=\"background-color:rgba(255,0,0,0.25);\"";
+                                    maxArr.push(IDLine);
                                 } else if (itemline == "Mínimo*"){    
-                                    tdColor="style=\"background-color:rgba(0,0,255,0.25);\"";                      
+                                    tdColor="style=\"background-color:rgba(0,0,255,0.25);\""; 
+                                    minArr.push(IDLine);                     
                                 } else if (itemline == "Média*"){   
                                     tdColor="style=\"background-color:rgba(255,255,0,0.25);\"";                      
                                 } 
-                                total = json['UF'][uf]['ANO'][itemline]['Total'].replace('-','');
-                                tbody+="<td "+tdColor+" >"+total+"</td>"; 
+                                tbody+="<td "+tdColor+" id=\""+IDLine+"\" >"+total+"</td>"; 
                             }); 
                             tbody+="</tr>";  
                         });  
                         table=table.replace("#thead",thead);
                         table=table.replace("#tbody",tbody);
                         setTable(table);
+                        for(let i = 0; i < maxArr.length; i++ ) {
+                            document.getElementById(maxArr[i]).style.backgroundColor = "rgba(255,0,0,0.25)";
+                            document.getElementById(minArr[i]).style.backgroundColor = "rgba(0,0,255,0.25)";                   
+                        }
                     });                    
                     //document.getElementById('desmatamentoTable').innerHTML="<center><h1>NO CONTENT</h1></center>";
                 }

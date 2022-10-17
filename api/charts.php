@@ -67,7 +67,7 @@
         }
         <?php 
             if (strcmp($_GET['state'],'dado') == 0) {
-                $label = "total ano a ano";
+                $label = "total ano a ano km²";
             } else {
                 $label = $dado;
             }
