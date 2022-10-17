@@ -41,22 +41,37 @@
                         index++;
                     });
                 } else {
-                    var media = JSON.parse(text)['UF'];
-                    var table;
-                    var index = 0;
-                    Object.keys(media).forEach(function(item){ 
-                        var mes = media[item]['ANO']['<?php echo $dado; ?>'];
-                        index = 0;
-                        Object.keys(mes).forEach(function(itemMes){ 
-                            number = mes[itemMes].replace("-","0");
-                            desmataData[index++] += parseInt(number);
-                        });
-                    });
+                    var json = JSON.parse(text);
+                    desmataData = [];
+                    titles = [];
+                    Object.keys(json['UF']['acre']['ANO']).forEach(function(itemline){
+                        somaEstado = 0;
+                        Object.keys(json['UF']).forEach(function(uf){
+                            if (itemline != "Máximo*" && itemline != "Média*" && itemline != "Mínimo*") {
+                                total = json['UF'][uf]['ANO'][itemline]['Total'].replace('-','');
+                                somaEstado+=parseInt(total);
+                            }
+                        });    
+                        desmataData.push(somaEstado);
+                        titles.push(itemline);
+                    });   
+                    desmataData.pop();
+                    desmataData.pop();
+                    titles.pop();
+                    titles.pop();
+                    titles.pop();
                 }
                 desmataData.pop();
                 chart(desmataData,titles);
             });
         }
+        <?php 
+            if (strcmp($_GET['state'],'dado') == 0) {
+                $label = "total ano a ano";
+            } else {
+                $label = $dado;
+            }
+        ?>
         function uf () {
             $.ajax({
                 url: 'uf.php?',
@@ -65,7 +80,7 @@
             }).done(function(text) { 
                 UFTitle = JSON.parse(text);
                 UFTitle = UFTitle["UF"]['<?php echo $state ?>'];
-                UFTitle += " (<?php echo $dado; ?>)";
+                UFTitle += " (<?php echo $label ?>)";
             });
         }        
         function chart (desmataData, titles) {

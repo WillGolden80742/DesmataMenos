@@ -116,6 +116,10 @@ require 'global.php';
             urlCharts = "<?php echo $currentURL ?>"+"api/grafico";
         } 
 
+        function setTable (table) {
+            document.getElementById('desmatamentoTable').innerHTML=table;
+        }
+
         function dados(value) {
             select_dado = document.getElementById('select_dados').value;
             var estado = document.getElementById("select_state").value;
@@ -123,7 +127,42 @@ require 'global.php';
                 if (estado !== "") {
                     tabela ();
                 } else {
-                    document.getElementById('desmatamentoTable').innerHTML="<center><h1>NO CONTENT</h1></center>";
+                    var table = "";
+                    var thStyle = "style=\"background-color:rgba(40, 93, 51,0.25);\"";
+                    $.ajax({
+                        url: 'api/queimadas.php',
+                        method: 'GET',
+                        dataType: 'html'
+                    }).done(function(text) { 
+                        var json = JSON.parse(text);
+                        thead="";
+                        table += "<table></thead><tr><th "+thStyle +">ano</th>#thead</tr></thead><tbody>#tbody</tbody></table>";
+                        tbody="";
+                        Object.keys(json['UF']).forEach(function(uf){
+                                thead += "<th "+thStyle +">"+uf+"</th>";
+                        }); 
+                        Object.keys(json['UF']['acre']['ANO']).forEach(function(itemline){
+                            somaEstado = 0;
+                            tbody+="<tr><th "+thStyle +" >"+itemline+"</th>";
+                            tdColor="";
+                            Object.keys(json['UF']).forEach(function(uf){
+                                if (itemline == "Máximo*") {
+                                    tdColor="style=\"background-color:rgba(255,0,0,0.25);\"";
+                                } else if (itemline == "Mínimo*"){    
+                                    tdColor="style=\"background-color:rgba(0,0,255,0.25);\"";                      
+                                } else if (itemline == "Média*"){   
+                                    tdColor="style=\"background-color:rgba(255,255,0,0.25);\"";                      
+                                } 
+                                total = json['UF'][uf]['ANO'][itemline]['Total'].replace('-','');
+                                tbody+="<td "+tdColor+" >"+total+"</td>"; 
+                            }); 
+                            tbody+="</tr>";  
+                        });  
+                        table=table.replace("#thead",thead);
+                        table=table.replace("#tbody",tbody);
+                        setTable(table);
+                    });                    
+                    //document.getElementById('desmatamentoTable').innerHTML="<center><h1>NO CONTENT</h1></center>";
                 }
                 document.getElementById('select_grafico_dados').disabled = true;
             } else if (select_dado == "grafico") {
@@ -252,7 +291,6 @@ require 'global.php';
                 });
                 table+="</tbody></table>";
                 document.getElementById("desmatamentoTable").innerHTML=table;
-                console.log (maxArr);
                 for(let i = 0; i < maxArr.length; i++ ) {
                     document.getElementById(maxArr[i]).style.backgroundColor = "rgba(255,0,0,0.25)";
                     document.getElementById(minArr[i]).style.backgroundColor = "rgba(0,0,255,0.25)";                   
@@ -273,6 +311,7 @@ require 'global.php';
             }  
             document.getElementById("estateMap").src=url+mapas[value];
         }
+
         
     </script>    
 
