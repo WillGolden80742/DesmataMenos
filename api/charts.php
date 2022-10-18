@@ -29,7 +29,18 @@
             background:white;
             border-radius:10px;
             border:solid 1px rgba(0,0,0,0.25);
-        }        
+        }    
+ 
+        ::-webkit-scrollbar-track {
+            border-radius:10px;
+            box-shadow:inset 0px 0px 5px rgba(0,0,0,0.25);
+        }
+
+        ::-webkit-input-placeholder{
+            color: rgb(255,255, 255);
+            font-weight: bold;
+        }       
+        
     </style>
     <script>
         var UFTitle = "";
