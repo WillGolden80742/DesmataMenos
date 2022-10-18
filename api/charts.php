@@ -94,10 +94,12 @@
                     }
                 }
             });
+            document.getElementById("loading").style.display = "none";
         }
     </script>
  
 </head>    
 <body>
+    <center id='loading' ><h1><img src="../assets/images/loading.gif" height=30px /></h1></center>
 </body>
 </html>
