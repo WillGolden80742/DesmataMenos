@@ -1,0 +1,1 @@
+Sistema que acompanha dados sobre queimadas e traz gráficos com sua totalização ano a ano
