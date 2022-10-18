@@ -145,7 +145,7 @@
 
         function redirect ($directory,$url) {
             $urlStr="";
-            $urlStr=$url[0].".php?state=".$url[2]."&dado=$url[4]";
+            $urlStr=$url[0].".php?state=".$url[2];
             header("Location: $directory".$urlStr);
         }
 
