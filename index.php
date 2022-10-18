@@ -200,7 +200,7 @@ require 'global.php';
         }
 
         function loading () {
-            document.getElementById('desmatamentoTable').innerHTML="<center style=\"background-color:rgba(255,255,255,1);\" ><h1><img src=\"assets/images/loading.gif\" height=20px /></h1></center>";  
+            document.getElementById('desmatamentoTable').innerHTML="<center style=\"background-color:rgba(255,255,255,1);\" ><h1><img src=\"assets/images/loading.gif\" height=30px /></h1></center>";  
         } 
 
         function tabelaTodosEstado () {           
