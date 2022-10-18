@@ -7,6 +7,16 @@
     <script src="../assets/js/chart.min.js"></script>
     <script src="../assets/js/jquery-3.6.0.min.js"></script>
     <canvas id="myChart" width="400" height="220"></canvas>
+    <style>
+        @keyframes example {
+            from {opacity:0;}
+            to {opacity:1;}
+        }
+        * {
+            animation-name: example;
+            animation-duration:0.5s;
+        }
+    </style>
     <script>
         var UFTitle = "";
         var tipoDado = "";

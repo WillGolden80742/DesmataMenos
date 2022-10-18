@@ -18,6 +18,14 @@ require 'global.php';
             font-size: 18px;
             font-family:Arial, Helvetica, sans-serif;
         }
+        @keyframes example {
+            from {opacity:0;}
+            to {opacity:1;}
+        }
+        * {
+            animation-name: example;
+            animation-duration:0.5s;
+        }
         ::-webkit-scrollbar {
             width:15px;
             border-radius:10px;
