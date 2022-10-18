@@ -133,6 +133,7 @@ require 'global.php';
             var estado = document.getElementById("select_state").value;
             if (select_dado == "tabela") {
                 loading ();
+                document.getElementById("desmatamentoTable").style.overflowY = "scroll";
                 if (estado !== "") {
                     tabela ();
                 } else {
@@ -140,6 +141,7 @@ require 'global.php';
                 }
             } else if (select_dado == "grafico") {
                 chart();
+                document.getElementById("desmatamentoTable").style.overflowY = "hidden";
             }
             if (value) {
                 mapRefresh(estado);

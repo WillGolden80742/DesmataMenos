@@ -16,6 +16,20 @@
             animation-name: example;
             animation-duration:0.5s;
         }
+        ::-webkit-scrollbar {
+            width:15px;
+            border-radius:10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background:rgb(255,255, 255);
+        }   
+
+        ::-webkit-scrollbar-thumb {
+            background:white;
+            border-radius:10px;
+            border:solid 1px rgba(0,0,0,0.25);
+        }        
     </style>
     <script>
         var UFTitle = "";
