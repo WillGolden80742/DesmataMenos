@@ -40,10 +40,10 @@
                 });   
                 desmataData.pop();
                 desmataData.pop();
-                titles.pop();
-                titles.pop();
-                titles.pop();
                 desmataData.pop();
+                titles.pop();
+                titles.pop();
+                titles.pop();
                 chart(desmataData,titles);
             });
         }   
