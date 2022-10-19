@@ -13,7 +13,7 @@ require 'global.php';
     <script src="assets/js/jquery-3.6.0.min.js"></script>
 
 
-    <style>
+    <style id='styleTable'>
         * {
             font-size: 18px;
             font-family:Arial, Helvetica, sans-serif;
@@ -93,9 +93,7 @@ require 'global.php';
             top: 0;
             height:90%;    
         }
-        .desmatamentoTable {
-            box-shadow: inset 0px 0px 20px rgb(0,0,0,1);
-        }
+
         
         @media only screen and (max-width: 1080px) {
             body {
@@ -140,6 +138,7 @@ require 'global.php';
             mapas = ""; 
             select ();
             tabela ();
+            styleTable();
             <?php 
                 $currentURL = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
                 $arrURL = explode("/",$currentURL);
@@ -153,12 +152,17 @@ require 'global.php';
             document.getElementById('desmatamentoTable').innerHTML=table;
         }
 
+        function styleTable () {
+            document.getElementById("styleTable").innerHTML+=".desmatamentoTable { transition:0.5s; box-shadow:none; } .desmatamentoTable:hover { transition:0.5s; box-shadow: inset 0px 0px 20px rgb(0,0,0,1); }";
+        }
+
         function dados(value) {
             select_dado = document.getElementById('select_dados').value;
             var estado = document.getElementById("select_state").value;
             if (select_dado == "tabela") {
                 loading ();
                 document.getElementById("desmatamentoTable").style.overflowY = "scroll";
+                styleTable();
                 if (estado !== "") {
                     tabela ();
                 } else {
@@ -167,6 +171,8 @@ require 'global.php';
             } else if (select_dado == "grafico") {
                 chart();
                 document.getElementById("desmatamentoTable").style.overflowY = "hidden";
+                styleTable = document.getElementById("styleTable").innerHTML;
+                document.getElementById("styleTable").innerHTML=styleTable.replaceAll(".desmatamentoTable { transition:0.5s; box-shadow:none; } .desmatamentoTable:hover { transition:0.5s; box-shadow: inset 0px 0px 20px rgb(0,0,0,1); }","");
             }
             if (value) {
                 mapRefresh(estado);
