@@ -1,12 +1,19 @@
 <?php  
     $state = $_GET['state'];
+
+    if (isset($_GET['res'])) {
+        $resolution = explode("x",$_GET['res']);
+    } else {
+        $resolution = [100,55];        
+    }
+    
 ?>
 <DOCTYPE html>  
 <html>
 <head>
     <script src="../assets/js/chart.min.js"></script>
     <script src="../assets/js/jquery-3.6.0.min.js"></script>
-    <canvas id="myChart" width="400" height="220"></canvas>
+    <canvas id="myChart" width=<?php echo $resolution[0]; ?> height=<?php echo $resolution[1]; ?>></canvas>
     <style>
         @keyframes example {
             from {opacity:0;}

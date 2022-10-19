@@ -97,6 +97,27 @@ require 'global.php';
             box-shadow: inset 0px 0px 20px rgb(0,0,0,1);
         }
         
+        @media only screen and (max-width: 1080px) {
+            body {
+                padding-top:1%;
+                padding-left:4%;
+                padding-right:4%;
+            }
+            *{
+                font-size: 26px;
+            }
+            .desmatamentoTable, .estateMap {
+                margin:0;
+                width: 100%;
+                align-items: center;
+                right: 0;
+                left: 0;
+                height:47%;
+            }
+            .estateMap {
+                margin-top: 20px;
+            }
+        }
     </style>    
 
     <script>
