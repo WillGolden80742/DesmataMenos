@@ -63,7 +63,7 @@ require 'global.php';
         }
 
         .desmatamentoTable {
-            width: 67%;
+            width: 68%;
             border-radius:10px;
             border:solid 2px rgb(40, 93, 51);
             overflow-y: scroll;

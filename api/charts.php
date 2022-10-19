@@ -6,7 +6,7 @@
     } else {
         $resolution = [100,55];        
     }
-    
+
 ?>
 <DOCTYPE html>  
 <html>
