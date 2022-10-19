@@ -91,7 +91,7 @@ require 'global.php';
         .desmatamentoTable, .estateMap {
             float: left;
             top: 0;
-            height:86%;    
+            height:90%;    
         }
         .desmatamentoTable {
             box-shadow: inset 0px 0px 20px rgb(0,0,0,1);
@@ -112,9 +112,13 @@ require 'global.php';
                 align-items: center;
                 right: 0;
                 left: 0;
-                height:47%;
+
+            }
+            .desmatamentoTable {
+                height:30%;
             }
             .estateMap {
+                height:30%;
                 margin-top: 20px;
             }
         }
