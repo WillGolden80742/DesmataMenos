@@ -133,12 +133,12 @@ require 'global.php';
 
         init ();
         function init () {
+            document.getElementById("styleTable").innerHTML+=".desmatamentoTable { transition:0.5s; box-shadow:none; } .desmatamentoTable:hover { transition:0.5s; box-shadow: inset 0px 0px 20px rgb(0,0,0,1); }";
             desmataData = [0,0,0,0,0,0,0,0,0,0,0,0];
             titles = ["","","","","","","","","","","",""];
             mapas = ""; 
             select ();
             tabela ();
-            styleTable();
             <?php 
                 $currentURL = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
                 $arrURL = explode("/",$currentURL);
@@ -152,8 +152,9 @@ require 'global.php';
             document.getElementById('desmatamentoTable').innerHTML=table;
         }
 
-        function styleTable () {
-            document.getElementById("styleTable").innerHTML+=".desmatamentoTable { transition:0.5s; box-shadow:none; } .desmatamentoTable:hover { transition:0.5s; box-shadow: inset 0px 0px 20px rgb(0,0,0,1); }";
+        function styleTableRemove (value) {
+            styleTable = document.getElementById("styleTable").innerHTML;
+            document.getElementById("styleTable").innerHTML=styleTable.replaceAll(".desmatamentoTable { transition:0.5s; box-shadow:none; } .desmatamentoTable:hover { transition:0.5s; box-shadow: inset 0px 0px 20px rgb(0,0,0,1); }",""); 
         }
 
         function dados(value) {
@@ -162,17 +163,16 @@ require 'global.php';
             if (select_dado == "tabela") {
                 loading ();
                 document.getElementById("desmatamentoTable").style.overflowY = "scroll";
-                styleTable();
                 if (estado !== "") {
                     tabela ();
                 } else {
                     tabelaTodosEstado();
                 }
+                document.getElementById("styleTable").innerHTML+=".desmatamentoTable { transition:0.5s; box-shadow:none; } .desmatamentoTable:hover { transition:0.5s; box-shadow: inset 0px 0px 20px rgb(0,0,0,1); }";
             } else if (select_dado == "grafico") {
                 chart();
                 document.getElementById("desmatamentoTable").style.overflowY = "hidden";
-                styleTable = document.getElementById("styleTable").innerHTML;
-                document.getElementById("styleTable").innerHTML=styleTable.replaceAll(".desmatamentoTable { transition:0.5s; box-shadow:none; } .desmatamentoTable:hover { transition:0.5s; box-shadow: inset 0px 0px 20px rgb(0,0,0,1); }","");
+                styleTableRemove();
             }
             if (value) {
                 mapRefresh(estado);
