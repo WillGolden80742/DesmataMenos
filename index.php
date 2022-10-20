@@ -100,7 +100,7 @@ require 'global.php';
                 padding-right:4%;
             }
             *{
-                font-size: 28px;
+                font-size: 42px;
             }
             .desmatamentoTable, .estateMap {
                 margin:0;
@@ -110,12 +110,21 @@ require 'global.php';
                 left: 0;
 
             }
-            .desmatamentoTable {
-                height:47%;
+            .select_state {
+                width: 100%;
+                margin-bottom:20px;
+            }
+            .select_save, .select_dados{
+                width:49%;
+            }
+            .select_dados {
+                float: right;
             }
             .estateMap {
-                height:47%;
                 margin-top: 20px;
+            }
+            .desmatamentoTable, .estateMap {
+                height:43%;
             }
         }
     </style>    
