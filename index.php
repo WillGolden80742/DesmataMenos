@@ -79,10 +79,8 @@ require 'global.php';
         }
 
         .select_state, .select_save, .select_dados {
-            color: #fff ;
             border:solid 2px rgb(40, 93, 51);
             background: none;
-            background-color: rgb(40, 93, 51);
             padding: 2px;
             border-radius:10px;
             box-shadow: 0px 0px 10px rgb(0 0 0 / 25%);
