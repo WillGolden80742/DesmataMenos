@@ -102,7 +102,7 @@ require 'global.php';
                 padding-right:4%;
             }
             *{
-                font-size: 26px;
+                font-size: 36px;
             }
             .desmatamentoTable, .estateMap {
                 margin:0;
@@ -374,8 +374,7 @@ require 'global.php';
 
     <div class="select_stateDIV">
         <p> 
-            <label>Selecione o estado:</label>
-
+            
             <select id="select_state" class="select_state" onchange="dados(true);">
             </select>
 
