@@ -391,7 +391,7 @@ require 'global.php';
             </select>
 
             <select id="select_save" class="select_save" onchange="save();">
-                <option value="">Baixar tabela</option>
+                <option value="">Baixar dados</option>
                 <option value="selecionado">Estado selecionado</option>
                 <option value="todos">Todos Estados</option>
             </select>
