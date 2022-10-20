@@ -114,10 +114,10 @@ require 'global.php';
                 width: 100%;
                 margin-bottom:20px;
             }
-            .select_save, .select_dados{
+            .select_save, .select_dados {
                 width:49%;
             }
-            .select_dados {
+            .select_save {
                 float: right;
             }
             .estateMap {
