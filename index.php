@@ -193,7 +193,7 @@ require 'global.php';
                     } else {
                         selected = "";
                     }
-                    options += "<option value=\""+item+"\" "+selected+" >"+"Estado - "+uf[item]+"</option>";
+                    options += "<option value=\""+item+"\" "+selected+" >"+"Estado : "+uf[item]+"</option>";
                 });
                 document.getElementById("select_state").innerHTML = options;
             });
@@ -377,8 +377,8 @@ require 'global.php';
             </select>
 
             <select id="select_dados" class="select_dados" onchange="dados();">
-                <option value="tabela">Dado - Tabela</option>
-                <option value="grafico">Dado - Gráfico</option>
+                <option value="tabela">Dado : Tabela</option>
+                <option value="grafico">Dado : Gráfico</option>
             </select>
 
             <select id="select_save" class="select_save" onchange="save();">
