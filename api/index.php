@@ -13,6 +13,7 @@
             margin-right:15%;
             border:solid 2px rgb(122, 122,122);
             box-shadow: 0px 0px 10px rgba(0,0,0,0.25);
+            word-break:break-all;
         }
     </style>
 </head>    

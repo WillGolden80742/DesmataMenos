@@ -8,6 +8,7 @@ require 'global.php';
 <DOCTYPE html>
 <html>
 <head>
+    <title>DesmataMenos</title>
     <script src="assets/js/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="assets/css/styles.css">
     <script src="assets/js/jquery-3.6.0.min.js"></script>
@@ -113,10 +114,10 @@ require 'global.php';
 
             }
             .desmatamentoTable {
-                height:30%;
+                height:47%;
             }
             .estateMap {
-                height:30%;
+                height:47%;
                 margin-top: 20px;
             }
         }
