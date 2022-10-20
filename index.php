@@ -70,7 +70,7 @@ require 'global.php';
         }
 
         .estateMap {
-            background-color: rgb(40, 93, 51);
+            background-color:white;
             width: 30%; 
             margin-left:10px;
             border-radius:10px;
