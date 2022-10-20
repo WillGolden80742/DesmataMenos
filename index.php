@@ -102,7 +102,7 @@ require 'global.php';
                 padding-right:4%;
             }
             *{
-                font-size: 36px;
+                font-size: 28px;
             }
             .desmatamentoTable, .estateMap {
                 margin:0;
