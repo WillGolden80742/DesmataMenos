@@ -193,13 +193,25 @@ require 'global.php';
                 var selected = "";
                 document.getElementById("select_state").innerHTML = "";
                 Object.keys(locale).forEach(function(localeItem) { 
+                    var tipo = ""; 
+                    switch (localeItem) {
+                        case "UF":
+                            tipo="Estado";
+                            break;
+                        case "REGIAO":
+                            tipo="Região";
+                            break;
+                        case "BIOMA":
+                            tipo="Bioma";
+                            break;
+                    }
                     Object.keys(locale[localeItem]).forEach(function(item) { 
                         if (item == estadoDefault) {
                             selected = "selected=\"selected\"";
                         } else {
                             selected = "";
                         }
-                        options += "<option value=\""+item+"\" id=\""+item+"\" "+selected+" >"+localeItem+" : "+locale[localeItem][item]+"</option>";
+                        options += "<option value=\""+item+"\" id=\""+item+"\" "+selected+" >"+tipo+" : "+locale[localeItem][item]+"</option>";
                     });
                 });
                 document.getElementById("select_state").innerHTML = options;
