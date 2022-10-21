@@ -131,8 +131,6 @@ require 'global.php';
 
     <script>
 
-        var desmataData = [];
-        var titles = [];
         var mapas = "";
         var urlCharts = "";
         var estado = "";
@@ -141,9 +139,6 @@ require 'global.php';
         init ();
         function init () {
             document.getElementById("styleTable").innerHTML+=".desmatamentoTable { transition:0.5s; box-shadow:none; } .desmatamentoTable:hover { transition:0.5s; box-shadow: inset 0px 0px 20px rgb(0,0,0,1); }";
-            desmataData = [0,0,0,0,0,0,0,0,0,0,0,0];
-            titles = ["","","","","","","","","","","",""];
-            mapas = ""; 
             select ();
             tabela ();
             <?php 
@@ -167,6 +162,7 @@ require 'global.php';
         function dados(value) {
             select_dado = document.getElementById('select_dados').value;
             var estado = document.getElementById("select_state").value;
+
             if (select_dado == "tabela") {
                 loading ();
                 document.getElementById("desmatamentoTable").style.overflowY = "scroll";
@@ -192,17 +188,19 @@ require 'global.php';
                 method: 'GET',
                 dataType: 'html'
             }).done(function(text) { 
-                var uf = JSON.parse(text)['UF'];
+                var locale = JSON.parse(text);
                 var options = "";
                 var selected = "";
                 document.getElementById("select_state").innerHTML = "";
-                Object.keys(uf).forEach(function(item){ 
-                    if (item == estadoDefault) {
-                        selected = "selected=\"selected\"";
-                    } else {
-                        selected = "";
-                    }
-                    options += "<option value=\""+item+"\" "+selected+" >"+"Estado : "+uf[item]+"</option>";
+                Object.keys(locale).forEach(function(localeItem) { 
+                    Object.keys(locale[localeItem]).forEach(function(item) { 
+                        if (item == estadoDefault) {
+                            selected = "selected=\"selected\"";
+                        } else {
+                            selected = "";
+                        }
+                        options += "<option value=\""+item+"\" id=\""+item+"\" "+selected+" >"+localeItem+" : "+locale[localeItem][item]+"</option>";
+                    });
                 });
                 document.getElementById("select_state").innerHTML = options;
             });
@@ -263,11 +261,13 @@ require 'global.php';
                 thead="";
                 table += "<table></thead><tr><th "+thStyle +">Ano</th>#thead</tr></thead><tbody>#tbody</tbody></table>";
                 tbody="";
+                var ufLast;
                 var maxArr = [], minArr = [];
                 Object.keys(json['UF']).forEach(function(uf){
+                        ufLast=uf;
                         thead += "<th "+thStyle +">"+uf+"</th>";
                 }); 
-                Object.keys(json['UF']['acre']['ANO']).forEach(function(itemline){
+                Object.keys(json['UF'][ufLast]['ANO']).forEach(function(itemline){
                     somaEstado = 0;
                     tbody+="<tr><th "+thStyle +" >"+itemline+"</th>";
                     tdColor="";
@@ -392,7 +392,7 @@ require 'global.php';
 
             <select id="select_save" class="select_save" onchange="save();">
                 <option value="">Baixar dados</option>
-                <option value="selecionado">Estado selecionado</option>
+                <option value="selecionado">Localidade selecionada</option>
                 <option value="todos">Todos Estados</option>
             </select>
         </p>

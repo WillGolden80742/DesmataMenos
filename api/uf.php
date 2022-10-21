@@ -1,9 +1,9 @@
 
 <?php 
     header("Content-type: application/json; charset=utf-8");
-    $jsonString = "{\"UF\" : {
+    $jsonString = "{\"UF\" : {                                             
             \"\":
-            \"Todos estados\",
+            \"Todos estados\",                 
             \"acre\":
             \"Acre\" ,    
             \"alagoas\":
@@ -58,7 +58,39 @@
             \"Sergipe\" , 
             \"tocantins\":
             \"Tocantins\"     
-        } 
+        }, 
+        \"REGIAO\" : {
+            \"norte\":
+            \"Região Norte\" ,   
+            \"nordeste\":
+            \"Região Nordeste\" ,      
+            \"centro-oeste\":
+            \"Região Centro-oeste\" ,     
+            \"sul\":
+            \"Região Sul\" ,
+            \"sudeste\":
+            \"Região Sudeste\" , 
+            \"amazonia_legal\":
+            \"Amazônia Legal\" ,  
+            \"vale_do_paraiba\":
+            \"Vale do Paraíba\" ,   
+            \"map\":
+            \"MAP\"              
+        }, 
+        \"BIOMA\" : {
+            \"caatinga\":
+            \"Caatinga\" ,        
+            \"cerrado\":
+            \"Cerrado\" ,    
+            \"pantanal\":
+            \"Pantanal\" ,   
+            \"pampa\":
+            \"Pampa\",
+            \"amazonia\":
+            \"Amazônia\", 
+            \"mata_atlantica\":
+            \"Mata Atlântica\" 
+        }
     }";
     echo $jsonString;
     
