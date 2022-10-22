@@ -66,14 +66,13 @@
                     });
                 } 
                 function sendEmail (value) {
-                    console.log(value);
                     $.ajax({
                         url: 'sendEmail.php?',
                         method: 'POST',
                         data: {locale: '<?php echo $_GET['locale']; ?>',content:value},
                         dataType: 'html'
                     }).done(function(text) { 
-                        alert("Enviado com sucesso!");
+                        console.log("Enviado com sucesso!");
                     });
                 }
         </script>
