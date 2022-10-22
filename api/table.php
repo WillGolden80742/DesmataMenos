@@ -7,7 +7,7 @@
                 tabela (); 
                 function tabela () {
                     try {
-                        estado = "<?php echo $_GET['locale']; ?>";
+                        estado = "<?php echo $_POST['locale']; ?>";
                     } catch (error) {
                         estado =estadoDefault;
                     } 
@@ -61,14 +61,14 @@
                             document.getElementById(maxArr[i]).style.backgroundColor = "rgba(255,0,0,0.25)";
                             document.getElementById(minArr[i]).style.backgroundColor = "rgba(0,0,255,0.25)";                   
                         }
-                        sendEmail ("<center> <h2><?php echo $_GET['locale']; ?></h2>"+table+" </center>");
+                        sendEmail ("<center> <h2><?php echo $_POST['locale']; ?></h2>"+table+" </center>");
                     });
                 } 
                 function sendEmail (value) {
                     $.ajax({
                         url: 'sendEmail.php?',
                         method: 'POST',
-                        data: {locale: '<?php echo $_GET['locale']; ?>',content:value,mail:<?php echo $_GET['mail']; ?>},
+                        data: {locale: '<?php echo $_POST['locale']; ?>',content:value,mail:<?php echo $_POST['mail']; ?>},
                         dataType: 'html'
                     }).done(function(text) { 
                         console.log("Enviado com sucesso!");
@@ -79,7 +79,7 @@
     <body>
         <div id="allContent">
             <center>   
-                <h2><?php echo $_GET['locale']; ?></h2>     
+                <h2><?php echo $_POST['locale']; ?></h2>     
                 <div id="desmatamentoTable">
                 </div>
              </center>
