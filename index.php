@@ -206,7 +206,7 @@ require 'global.php';
                     switch (localeItem) {
                         case "UF":
                             tipo="Estado";
-                            ufJSON = locale['UF'];
+                            ufJSON = locale;
                             break;
                         case "REGIAO":
                             tipo="Região";
@@ -405,13 +405,22 @@ require 'global.php';
                 dados();
             }
             firstIteration=true;
-            Object.keys(ufJSON).forEach(function(itemline){
-                if(firstIteration) {
-                    firstIteration=false;
-                }
-                document.getElementById("styleTable").innerHTML+="#"+itemline+" path { fill:rgb(40, 93, 51) !important; cursor:pointer  } #"+itemline+" .circle { fill:rgb(30 62 36) !important; cursor:pointer }";
-            });
-            document.getElementById("styleTable").innerHTML+="#"+uf+" path { fill:#1d8634 !important; cursor:pointer }";
+            if (uf == "") {
+                Object.keys(ufJSON['UF']).forEach(function(itemline){
+                    if(firstIteration) {
+                        firstIteration=false;
+                    }
+                    document.getElementById("styleTable").innerHTML+="#"+itemline+" path { fill:#1d8634 !important; cursor:pointer }  #"+itemline+" .circle { fill:rgb(30 62 36) !important; cursor:pointer }";
+                });
+            } else {
+                Object.keys(ufJSON['UF']).forEach(function(itemline){
+                    if(firstIteration) {
+                        firstIteration=false;
+                    }
+                    document.getElementById("styleTable").innerHTML+="#"+itemline+" path { fill:rgb(40, 93, 51) !important; cursor:pointer  } #"+itemline+" .circle { fill:rgb(30 62 36) !important; cursor:pointer }";
+                });   
+                document.getElementById("styleTable").innerHTML+="#"+uf+" path { fill:#1d8634 !important; cursor:pointer }";
+            }
         }
         
     </script>    
