@@ -1,7 +1,7 @@
 
 <?php 
 
- echo "Wolol";
+ echo "Wolol\n".file_get_contents("https://queimadas.dgi.inpe.br/queimadas/portal-static/csv_estatisticas/historico_estado_sao_paulo.csv");
 
 
 ?>
