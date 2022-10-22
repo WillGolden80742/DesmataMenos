@@ -98,7 +98,7 @@ require 'global.php';
         #svg-map a:hover { cursor:pointer; text-decoration:none }
         #svg-map a:hover path{ fill:#1d8634 !important }
         #svg-map .circle { fill:rgb(30 62 36); }
-        #sao_paulo path{ fill:#1d8634 !important }
+        #amazonas path{ fill:#1d8634 !important }
         
         @media only screen and (max-width: 1080px) {
             body {
@@ -141,7 +141,7 @@ require 'global.php';
         var mapas = "";
         var urlCharts = "";
         var estado = "";
-        var estadoDefault = "sao_paulo";
+        var estadoDefault = "amazonas";
         var ufJSON = "";
 
         init ();
