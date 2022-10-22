@@ -1,7 +1,7 @@
 
 <?php 
 
-require 'global.php';
+require 'api/global.php';
 
 ?>
 
