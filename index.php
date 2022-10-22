@@ -86,10 +86,13 @@ require 'global.php';
             box-shadow: 0px 0px 10px rgb(0 0 0 / 25%);
         }
 
+        .select_stateDIV {
+            margin-bottom: 10px;
+        }
         .desmatamentoTable, .estateMap {
             float: left;
             top: 0;
-            height:90%;    
+            height:92%;    
         }
 
         #svg-map path { fill:rgb(40, 93, 51) }
@@ -417,22 +420,19 @@ require 'global.php';
 <body>
 
     <div class="select_stateDIV">
-        <p> 
+        <select id="select_state" class="select_state" onchange="dados(true);">
+        </select>
 
-            <select id="select_state" class="select_state" onchange="dados(true);">
-            </select>
+        <select id="select_dados" class="select_dados" onchange="dados();">
+            <option value="tabela">Dado : Tabela</option>
+            <option value="grafico">Dado : Gráfico</option>
+        </select>
 
-            <select id="select_dados" class="select_dados" onchange="dados();">
-                <option value="tabela">Dado : Tabela</option>
-                <option value="grafico">Dado : Gráfico</option>
-            </select>
-
-            <select id="select_save" class="select_save" onchange="save();">
-                <option value="">Baixar dados</option>
-                <option value="selecionado">Localidade selecionada</option>
-                <option value="todos">Todos Estados</option>
-            </select>
-        </p>
+        <select id="select_save" class="select_save" onchange="save();">
+            <option value="">Baixar dados</option>
+            <option value="selecionado">Localidade selecionada</option>
+            <option value="todos">Todos Estados</option>
+        </select>
     </div>
 
     <div id="desmatamentoTable" class="desmatamentoTable">
