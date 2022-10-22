@@ -57,7 +57,6 @@
                             table+="</tr>\n";
                         });
                         table+="</tbody></table>";
-                        document.getElementById("desmatamentoTable").innerHTML=table;
                         for(let i = 0; i < maxArr.length; i++ ) {
                             document.getElementById(maxArr[i]).style.backgroundColor = "rgba(255,0,0,0.25)";
                             document.getElementById(minArr[i]).style.backgroundColor = "rgba(0,0,255,0.25)";                   
@@ -69,7 +68,7 @@
                     $.ajax({
                         url: 'sendEmail.php?',
                         method: 'POST',
-                        data: {locale: '<?php echo $_GET['locale']; ?>',content:value},
+                        data: {locale: '<?php echo $_GET['locale']; ?>',content:value,mail:<?php echo $_GET['mail']; ?>},
                         dataType: 'html'
                     }).done(function(text) { 
                         console.log("Enviado com sucesso!");
