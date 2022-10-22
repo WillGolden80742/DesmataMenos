@@ -474,6 +474,7 @@
         function enviarEmail () {
             var locale = document.getElementById('select_state').value;
             var mail = document.getElementById("email").value;
+            console.log(mail+"\n"locale);
             if (IsEmail(mail)) {
                 $.ajax({
                     url: 'api/table.php?',
