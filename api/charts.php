@@ -57,7 +57,7 @@
         uf();
         function dadosMesAMes () {
             $.ajax({
-                url: 'queimadas.php',
+                url: 'queimadas.php?',
                 method: 'GET',
                 data: {state: "<?php echo $state ?>" },
                 dataType: 'html'

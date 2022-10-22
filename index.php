@@ -272,7 +272,7 @@ require 'global.php';
             var table = "";
             var thStyle = "style=\"background-color:rgba(40, 93, 51,0.25);\"";
             $.ajax({
-                url: 'api/queimadas.php',
+                url: 'api/queimadas/',
                 method: 'GET',
                 dataType: 'html'
             }).done(function(text) { 
