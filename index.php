@@ -12,7 +12,7 @@ require 'global.php';
     <script src="assets/js/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="assets/css/styles.css">
     <script src="assets/js/jquery-3.6.0.min.js"></script>
-    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.png">
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
     <style id='styleTable'>
         * {
             font-size: 18px;
