@@ -92,7 +92,7 @@
         }   
         function uf () {
             $.ajax({
-                url: 'uf.php?',
+                url: 'locale',
                 method: 'GET',
                 dataType: 'html'
             }).done(function(text) { 

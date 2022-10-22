@@ -42,12 +42,7 @@
         <hr>
         <h3> 
             uf/ - Acesse os valores de todas unidades federativas do Brasil
-        </h3>
-        <h1>Mapas</h1>
-        <hr>
-        <h3> 
-            mapas/ - Acesse os valores de url (https://google.com/maps/embed?pb=) de google mapas das unidades federativas
-        </h3>    
+        </h3>  
         <hr>
         <h3>         
             Opção de estados : <br>           
@@ -132,8 +127,8 @@
                 $urlArr[0]='charts';    
                 redirect($currentDirectory,$urlArr);
                 break;  
-            case "uf":
-                $urlArr[0]='uf';    
+            case "locale":
+                $urlArr[0]='locale';    
                 redirect($currentDirectory,$urlArr);
                 break;    
             case "queimadas":
