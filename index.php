@@ -473,17 +473,16 @@
         }
         function enviarEmail () {
             var locale = document.getElementById('select_state').value;
+            var content = "<center><h2>"+locale+"</h2>"+document.getElementById("desmatamentoTable").innerHTML+"</center>";
             var mail = document.getElementById("email").value;
-            console.log(mail+"\n"+locale);
             if (IsEmail(mail)) {
                 $.ajax({
-                    url: 'api/table.php?',
-                    method: 'GET',
-                    data: {locale:locale,mail:mail},
+                    url: 'api/sendEmail.php?',
+                    method: 'POST',
+                    data: {locale:locale,content:content,mail:mail},
                     dataType: 'html'
                 }).done(function(text) { 
-                    alert("E-mail enviado com sucesso!");
-                    mailFrame(false);
+                    alert("Enviado com sucesso para "+mail+"!");
                 });
             } else {
                 alert("E-mail invalido!");                
