@@ -1,10 +1,12 @@
 
 <?php 
+    header("Content-type: application/json; charset=utf-8");
+    
     require "Controller/QueimadasController.php";
 
     $queimadas = new QueimadasController();
 
-    header("Content-type: application/json; charset=utf-8");
+
     if (isset($_GET['state']) && strcmp($_GET['state'],"") !== 0) {
         $estados = explode(",",$_GET['state']);
     } else {
