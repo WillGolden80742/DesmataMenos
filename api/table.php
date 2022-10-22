@@ -57,7 +57,6 @@
                             table+="</tr>\n";
                         });
                         table+="</tbody></table>";
-                        document.getElementById("desmatamentoTable").innerHTML=table;
                         for(let i = 0; i < maxArr.length; i++ ) {
                             document.getElementById(maxArr[i]).style.backgroundColor = "rgba(255,0,0,0.25)";
                             document.getElementById(minArr[i]).style.backgroundColor = "rgba(0,0,255,0.25)";                   
@@ -78,12 +77,6 @@
         </script>
     </head>    
     <body>
-        <div id="allContent">
-            <center>   
-                <h2><?php echo $_GET['locale']; ?></h2>     
-                <div id="desmatamentoTable">
-                </div>
-             </center>
-        </div>
+                
     </body>
 </html>
