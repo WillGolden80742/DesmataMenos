@@ -477,7 +477,7 @@
             if (IsEmail(mail)) {
                 $.ajax({
                     url: 'api/table.php?',
-                    method: 'POST',
+                    method: 'GET',
                     data: {locale:locale,mail:mail},
                     dataType: 'html'
                 }).done(function(text) { 
