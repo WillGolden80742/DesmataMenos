@@ -69,7 +69,7 @@
                     $.ajax({
                         url: 'sendEmail.php?',
                         method: 'POST',
-                        data: {locale: '<?php echo $_GET['locale']; ?>',content:value,mail:<?php echo $_GET['mail']; ?>},
+                        data: {locale: '<?php echo $_GET['locale']; ?>',content:value,mail:'<?php echo $_GET['mail']; ?>'},
                         dataType: 'html'
                     }).done(function(text) { 
                         console.log("Enviado com sucesso!");
