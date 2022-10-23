@@ -173,7 +173,7 @@
                 margin-top: 20px;
             }
             .desmatamentoTable, .estateMap {
-                height:40.5%;
+                height:41.2%;
             }
             .mailFrame {
                 left: 0;
