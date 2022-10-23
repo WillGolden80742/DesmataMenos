@@ -491,7 +491,8 @@
             if (IsEmail(mail)) {
                 encaminhar(locale,content,mail);
             } else {
-                alert("E-mail invalido!");                
+                alert("E-mail invalido!");  
+                mailFrame(false);              
             }
         }
 
