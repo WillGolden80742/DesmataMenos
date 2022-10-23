@@ -491,8 +491,7 @@
             if (IsEmail(mail)) {
                 encaminhar(locale,content,mail);
             } else {
-                alert("E-mail invalido!");  
-                mailFrame(false);              
+                alert("E-mail invalido!");            
             }
         }
 
@@ -503,8 +502,8 @@
                 data: {locale:locale,content:content,mail:mail},
                 dataType: 'html'
             }).done(function(text) { 
-                console.log(content);
                 alert("Enviado com sucesso para "+mail+"!");
+                mailFrame(false);    
             });
         }
 
