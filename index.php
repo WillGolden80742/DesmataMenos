@@ -231,13 +231,13 @@
             }
 
             .buttonIncrease {
-                width:60px;
-                height:110px;
+                width:70px;
+                height:150px;
             }
 
             .buttonIncrease #more, .buttonIncrease #less {
-                width:60px;
-                height:60px;
+                width:70px;
+                height:70px;
             }
         }
     </style>    
@@ -371,11 +371,11 @@
         function changeTableTextSize (value) {
             var fontSize = parseInt($('td').css('font-size').replace("px",""));
             if (value){
-                $('td').css('font-size',(fontSize+5)+'px');
-                $('th').css('font-size',(fontSize+5)+'px');
+                $('td').css('font-size',(fontSize+10)+'px');
+                $('th').css('font-size',(fontSize+10)+'px');
             } else {
-                $('td').css('font-size',(fontSize-5)+'px');
-                $('th').css('font-size',(fontSize-5)+'px');
+                $('td').css('font-size',(fontSize-10)+'px');
+                $('th').css('font-size',(fontSize-10)+'px');
             }
         }
 
