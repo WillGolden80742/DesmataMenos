@@ -62,7 +62,7 @@
 
         .estateMap {
             background-color:white;
-            width: 37.3%; 
+            width: 36.3%; 
             margin-left:10px;
             border:solid 1px #414C6B;
             display: inline-block;  
@@ -83,21 +83,13 @@
             margin-bottom: 10px;
             border:solid 1px #414C6B;
             padding:5px;
-            width:98.8%;
+            width:97.8%;
         }
         .desmatamentoTable, .estateMap {
             float: left;
             top: 0;
             height:90%;    
         }
-
-        #svg-map path { fill:#414C6B }
-        #svg-map text { fill:#fff; font:12px Arial-BoldMT, sans-serif; cursor:pointer }
-        #svg-map a{ text-decoration:none }
-        #svg-map a:hover { cursor:pointer; text-decoration:none }
-        #svg-map a:hover path{ fill:#1a73e8 !important }
-        #svg-map .circle { fill:#2d3038; }
-        #amazonas path{ fill:#1a73e8 !important }
         
         .mailFrame {
             z-index: 1000;
@@ -136,7 +128,15 @@
             border:solid 1px #414C6B;
             overflow-y: auto;
         }
-        @media only screen and (max-width: 1080px) {
+
+        #svg-map path { fill:#414C6B }
+        #svg-map text { fill:#fff; font:12px Arial-BoldMT, sans-serif; cursor:pointer }
+        #svg-map a{ text-decoration:none }
+        #svg-map a:hover { cursor:pointer; text-decoration:none }
+        #svg-map a:hover path{ fill:#1a73e8 !important }
+        #svg-map .circle { fill:#2d3038; }
+        #amazonas path{ fill:#1a73e8 !important }
+        @media (orientation: portrait) {
             body {
                 padding-top:1%;
                 padding-left:4%;
@@ -185,6 +185,9 @@
                 width:93%;
                 height:94%;
             }  
+            .select_stateDIV {
+                width:98.8%;
+            }
         }
     </style>    
 
@@ -206,7 +209,7 @@
                 $sizeArrURL = count ($arrURL)-1;
                 $currentURL = str_replace($arrURL[$sizeArrURL],"",$currentURL);
             ?>
-            urlCharts = "<?php echo $currentURL ?>"+"api/grafico";
+            urlCharts = "<?php echo $currentURL ?>"+"api/";
         } 
 
         function setTable (table) {
