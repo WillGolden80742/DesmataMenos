@@ -22,61 +22,55 @@
         }
         ::-webkit-scrollbar {
             width:15px;
-            border-radius:10px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background:rgb(40, 93, 51);
+            background:#414C6B;
         }   
 
         ::-webkit-scrollbar-thumb {
             background:white;
-            border-radius:10px;
             border:solid 1px rgba(0,0,0,0.25);
             background:rgba(0,0,0,0.125);
         }
 
         ::-webkit-scrollbar-track {
-            border-radius:10px;
             box-shadow:inset 0px 0px 5px rgba(0,0,0,0.25);
         }
 
         ::-webkit-input-placeholder{
-            color: rgb(40, 93, 51);
+            color: #414C6B;
             font-weight: bold;
         }
         .desmatamento { 
             width:600px;
             height:300px;
             overflow-y:scroll;
-            border:solid 2px rgb(40, 93, 51);
-            border-radius:10px;   
+            border:solid 1px #414C6B;   
         }
-        td , center { border:solid 2px #cff }
+        td , center { border:solid 2px #0038ff14 }
         th, td {
             padding:5px;
         }
 
         .desmatamentoTable {
             width: 61.3%;
-            border:solid 2px rgb(40, 93, 51);
+            border:solid 1px #414C6B;
             overflow-y: scroll;
         }
 
         .estateMap {
             background-color:white;
-            width: 37%; 
+            width: 37.3%; 
             margin-left:10px;
-            border:solid 2px rgb(40, 93, 51);
+            border:solid 1px #414C6B;
             display: inline-block;  
             overflow: auto;
         }
         .select_state, .select_save, .select_dados, .select_mail {
-            border:solid 2px rgb(40, 93, 51);
-            box-shadow: 0px 0px 10px rgb(0 0 0 / 25%);
-            background-color: #1d8634;
-            color:#fff;
+            border:solid 1px #414C6B;
             font-weight: bolder;
+            background-color: #fff;
         }
 
         .select_state option, .select_save option, .select_dados option, .select_mail option {
@@ -86,7 +80,7 @@
 
         .select_stateDIV {
             margin-bottom: 10px;
-            border:solid 2px rgb(40, 93, 51);
+            border:solid 1px #414C6B;
             padding:5px;
         }
         .desmatamentoTable, .estateMap {
@@ -95,13 +89,13 @@
             height:90%;    
         }
 
-        #svg-map path { fill:rgb(40, 93, 51) }
+        #svg-map path { fill:#414C6B }
         #svg-map text { fill:#fff; font:12px Arial-BoldMT, sans-serif; cursor:pointer }
         #svg-map a{ text-decoration:none }
         #svg-map a:hover { cursor:pointer; text-decoration:none }
-        #svg-map a:hover path{ fill:#1d8634 !important }
-        #svg-map .circle { fill:rgb(30 62 36); }
-        #amazonas path{ fill:#1d8634 !important }
+        #svg-map a:hover path{ fill:#1a73e8 !important }
+        #svg-map .circle { fill:#2d3038; }
+        #amazonas path{ fill:#1a73e8 !important }
         
         .mailFrame {
             z-index: 1000;
@@ -113,10 +107,9 @@
             bottom:5%;
             left:5%;
             right:4%;
-            border:solid 2px rgb(40, 93, 51);
+            border:solid 1px #414C6B;
             padding:1%;
-            border-radius:10px;
-            box-shadow: 0px 0px 10px rgb(0 0 0 / 25%);
+            box-shadow: 0px 0px 20px rgb(0 0 0 / 25%);
             margin: 0;
             backdrop-filter: blur(12px);
             overflow: auto;
@@ -126,7 +119,7 @@
         .mailFrame input, .mailFrame button {
            display: inline-block;
            background: none;
-           border:solid 2px rgb(40, 93, 51);
+           border:solid 1px #414C6B;
            padding:5px; 
            border-radius:10px;
            margin-bottom:10px;
@@ -136,15 +129,14 @@
             border: none;
         }
         .mailFrame button:hover {
-            background: rgb(40, 93, 51); 
+            background: #414C6B; 
             color:white;
         }
         .mailFrame div {
             background-color: white;
             width: 90%;
             height: 90%;
-            border:solid 2px rgb(40, 93, 51);
-            border-radius:10px;
+            border:solid 1px #414C6B;
             overflow-y: auto;
         }
         @media only screen and (max-width: 1080px) {
@@ -199,7 +191,6 @@
 
         init ();
         function init () {
-            document.getElementById("styleTable").innerHTML+=".desmatamentoTable { transition:0.5s; box-shadow:none; } .desmatamentoTable:hover { transition:0.5s; box-shadow: inset 0px 0px 20px rgb(0,0,0,1); }";
             select ();
             tabela ();
             <?php 
@@ -213,11 +204,6 @@
 
         function setTable (table) {
             document.getElementById('desmatamentoTable').innerHTML=table;
-        }
-
-        function styleTableRemove (value) {
-            styleTable = document.getElementById("styleTable").innerHTML;
-            document.getElementById("styleTable").innerHTML=styleTable.replaceAll(".desmatamentoTable { transition:0.5s; box-shadow:none; } .desmatamentoTable:hover { transition:0.5s; box-shadow: inset 0px 0px 20px rgb(0,0,0,1); }",""); 
         }
 
         function dados(value) {
@@ -234,12 +220,10 @@
                     tabelaTodosEstado();
                     document.getElementById('select_mail').disabled = true;
                 }
-                document.getElementById("styleTable").innerHTML+=".desmatamentoTable { transition:0.5s; box-shadow:none; } .desmatamentoTable:hover { transition:0.5s; box-shadow: inset 0px 0px 20px rgb(0,0,0,1); }";
             } else if (select_dado == "grafico") {
                 document.getElementById('select_mail').disabled = true;
                 chart();
                 document.getElementById("desmatamentoTable").style.overflowY = "hidden";
-                styleTableRemove();
             }
             selectMapRefreshTable(estado,false);
         }
@@ -388,7 +372,7 @@
             }).done(function(text) { 
                 var text = JSON.parse(text)['UF'][estado];
                 var table = "<table>\n<thead>";
-                var thStyle = "style=\"background-color:rgba(40, 93, 51,0.25);\"";
+                var thStyle = "style=\"background-color:rgba(65,76,107,0.25);\"";
                 var titleAno = text['ANO'];
                 var firstAno = "";
                 Object.keys(titleAno).forEach(function(item){ 
@@ -467,16 +451,16 @@
                     if(firstIteration) {
                         firstIteration=false;
                     }
-                    document.getElementById("styleTable").innerHTML+="#"+itemline+" path { fill:#1d8634 !important; cursor:pointer }  #"+itemline+" .circle { fill:rgb(30 62 36) !important; cursor:pointer }";
+                    document.getElementById("styleTable").innerHTML+="#"+itemline+" path { fill:#1a73e8 !important; cursor:pointer }  #"+itemline+" .circle { fill:#2d3038 !important; cursor:pointer }";
                 });
             } else {
                 Object.keys(ufJSON['UF']).forEach(function(itemline){
                     if(firstIteration) {
                         firstIteration=false;
                     }
-                    document.getElementById("styleTable").innerHTML+="#"+itemline+" path { fill:rgb(40, 93, 51) !important; cursor:pointer  } #"+itemline+" .circle { fill:rgb(30 62 36) !important; cursor:pointer }";
+                    document.getElementById("styleTable").innerHTML+="#"+itemline+" path { fill:#414C6B !important; cursor:pointer  } #"+itemline+" .circle { fill:#2d3038 !important; cursor:pointer }";
                 });   
-                document.getElementById("styleTable").innerHTML+="#"+uf+" path { fill:#1d8634 !important; cursor:pointer }";
+                document.getElementById("styleTable").innerHTML+="#"+uf+" path { fill:#1a73e8 !important; cursor:pointer }";
             }
         }
         function mailFrame(value) {
