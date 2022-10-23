@@ -262,6 +262,7 @@
         var estadoDefault = "amazonas";
         var ufJSON = "";
         var moreAndLess;
+        var defaultFontSize = $('*').css('font-size');
 
         init ();
         function init () {
@@ -562,6 +563,8 @@
                 document.getElementById("mailFrame").style.display = "block"; 
                 document.getElementById("backDark").style.display = "block"; 
                 document.getElementById("select_mail").value="";
+                $('td').css('font-size',defaultFontSize);
+                $('th').css('font-size',defaultFontSize);
                 document.getElementById("tableMail").innerHTML=("<center><h2>"+getTitle(locale)+"</h2></center>"+document.getElementById("desmatamentoTable").innerHTML+"").replace(moreAndLess,"");
             } else {
                 document.getElementById("backDark").style.display = "none"; 
