@@ -38,7 +38,5 @@
             $query->bindParam(':locale',$locale, PDO::PARAM_STR);
             return $connection->execute($query)->fetch(PDO::FETCH_ASSOC);
         }  
-
-
     }
 ?>

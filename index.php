@@ -152,7 +152,7 @@
         #svg-map a:hover { cursor:pointer; text-decoration:none }
         #svg-map a:hover path{ fill:#1a73e8 !important }
         #svg-map .circle { fill:#2d3038; }
-
+        #amazonas path{ fill:#1a73e8 !important }
 
         .buttonIncrease {
             position:fixed;
@@ -303,7 +303,6 @@
         function init () {
             select ();
             tabela ();
-            $('#'+estadoDefault+' path').css('fill:','#1a73e8');
             <?php 
                 $currentURL = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
                 $arrURL = explode("/",$currentURL);
@@ -446,17 +445,17 @@
                 tbody="";
                 var ufLast;
                 var maxArr = [], minArr = [];
-                Object.keys(json).forEach(function(uf){
+                Object.keys(json['LOCALE']).forEach(function(uf){
                         ufLast=uf;
                         thead += "<th "+thStyle +" >"+uf+"</th>";
                 }); 
-                Object.keys(json[ufLast]['ANO']).forEach(function(itemline){
+                Object.keys(json['LOCALE'][ufLast]['ANO']).forEach(function(itemline){
                     somaEstado = 0;
                     tbody+="<tr><th "+thStyle +" >"+itemline+"</th>";
                     tdColor="";
                     countLine=0;
-                    Object.keys(json).forEach(function(uf){
-                        total = json[uf]['ANO'][itemline]['Total'].replace('-','');
+                    Object.keys(json['LOCALE']).forEach(function(uf){
+                        total = json['LOCALE'][uf]['ANO'][itemline]['Total'].replace('-','');
                         var IDLine = "line"+(countLine++)+total;
                         if (itemline == "Máximo*") {
                             tdColor="style=\"background-color:rgba(255,0,0,0.25);\"";
@@ -493,7 +492,7 @@
                 data: {state: estado},
                 dataType: 'html'
             }).done(function(text) { 
-                var text = JSON.parse(text)[estado];
+                var text = JSON.parse(text)['LOCALE'][estado];
                 var table = "<table >\n<thead>";
                 var thStyle = "style=\"background-color:rgba(65,76,107,0.25);\"";
                 var titleAno = text['ANO'];
@@ -553,7 +552,7 @@
                     method: 'GET',
                     dataType: 'html'
                 }).done(function(text) { 
-                    mapas = JSON.parse(text);
+                    mapas = JSON.parse(text)['LOCALE'];
                 });
             }  
             document.getElementById("estateMap").src=url+mapas[value];
@@ -573,7 +572,7 @@
             var styleMapa = (document.getElementById("styleTable").innerHTML).split(tagEstilo)[0];
             document.getElementById("styleTable").innerHTML=styleMapa;
             if (uf == "") {
-                Object.keys(ufJSON).forEach(function(itemline){
+                Object.keys(ufJSON['LOCALE']).forEach(function(itemline){
                     if(firstIteration) {
                         firstIteration=false;
                     }
@@ -581,7 +580,7 @@
                 });
             } else {
                 document.getElementById("styleTable").innerHTML+=tagEstilo;
-                Object.keys(ufJSON).forEach(function(itemline){
+                Object.keys(ufJSON['LOCALE']).forEach(function(itemline){
                     if(firstIteration) {
                         firstIteration=false;
                     }
@@ -606,8 +605,8 @@
         }
 
         function getTitle (locale) {
-            if(ufJSON[locale]) {
-                return ufJSON[locale];
+            if(ufJSON['LOCALE'][locale]) {
+                return ufJSON['LOCALE'][locale];
             } else if (ufJSON['REGIAO'][locale]) {
                 return ufJSON['REGIAO'][locale];     
             } else if (ufJSON['BIOMA'][locale]) {
