@@ -253,7 +253,8 @@
             }
         }
     </style>    
-
+    <style id="tableStyle">
+    </style>
     <script>
 
         var mapas = "";
@@ -384,11 +385,9 @@
         function changeTableTextSize (value) {
             var fontSize = parseInt($('td').css('font-size').replace("px",""));
             if (value){
-                $('td').css('font-size',(fontSize+10)+'px');
-                $('th').css('font-size',(fontSize+10)+'px');
+                document.getElementById('tableStyle').innerHTML="td, th { font-size:"+(fontSize+10)+"px;)}";
             } else {
-                $('td').css('font-size',(fontSize-10)+'px');
-                $('th').css('font-size',(fontSize-10)+'px');
+                document.getElementById('tableStyle').innerHTML="td, th { font-size:"+(fontSize-10)+"px;)}";
             }
         }
 
@@ -564,8 +563,6 @@
                 document.getElementById("mailFrame").style.display = "block"; 
                 document.getElementById("backDark").style.display = "block"; 
                 document.getElementById("select_mail").value="";
-                //$('td').css('font-size',defaultFontSize);
-                //$('th').css('font-size',defaultFontSize);
                 document.getElementById("tableMail").innerHTML=html.replace("#body",("<center><h2>"+getTitle(locale)+"</h2></center>"+document.getElementById("desmatamentoTable").innerHTML+"").replace(moreAndLess,""));
             } else {
                 document.getElementById("backDark").style.display = "none"; 
