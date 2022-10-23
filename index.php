@@ -88,6 +88,7 @@
             padding:5px;
             width:97.77%;
             left:0;
+            overflow: auto;
         }
         .desmatamentoTable, .estateMap {
             float: left;
@@ -186,6 +187,20 @@
             background-size: 100vw auto;
             background-size: cover;
         }
+
+        .INPE {
+            background-color: #fbda43;
+            padding:2px;
+            color:#03316f;
+            float: right;
+            text-decoration: none;
+            color:black;
+            font-family: "open_sansbold", Arial, Helvetica, sans-serif;
+        }
+
+        .INPE img {
+            height:12px;
+        }
         @media (orientation: portrait) {
             body {
                 padding-top:1%;
@@ -222,8 +237,11 @@
             .estateMap {
                 margin-top: 20px;
             }
-            .desmatamentoTable, .estateMap {
-                height:41.2%;
+            .desmatamentoTable {
+                height:28.5%;
+            } 
+            .estateMap {
+                height:50.2%;
             }
             .mailFrame {
                 left: 0;
@@ -251,7 +269,23 @@
                 width:70px;
                 height:70px;
             }
+            .INPE {
+                margin-top: auto;
+                margin-bottom: auto;
+                text-align:center;
+                text-decoration: none;
+                color:black;
+                font-family: "open_sansbold", Arial, Helvetica, sans-serif;
+                font-size:48px;
+                width:99.5%;
+                margin-top:5px;
+            }
+
+            .INPE img {
+                height:32px;
+            }
         }
+
     </style>    
     <style id="tableStyle">
     </style>
@@ -648,6 +682,8 @@
                     <option value="">Receber por e-mail</option>
                     <option>Enviar</option>
                 </select>
+                <a href="https://queimadas.dgi.inpe.br/queimadas/portal-static/estatisticas_estados/" class="INPE" ><img src="assets/images/inpe.svg" alt="INPE" title="INPE"> Queimadas</a>
+        
             </div>
 
             <div id="desmatamentoTable" class="desmatamentoTable">
