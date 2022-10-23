@@ -96,16 +96,16 @@
         }
         
         .mailFrame {
-            z-index: 1000;
+            z-index: 2000;
             position:fixed;
-            background:rgba(255,255,255,0.5);
-            width:98.5%;
-            height:95%;
+            background:rgba(255,255,255,0.75);
+            width:80%;
+            height:93%;
+            left:10%;
             padding-top:1%;
             border:solid 1px #414C6B;
             box-shadow: 0px 0px 20px rgb(0 0 0 / 25%);
             margin: 0;
-            backdrop-filter: blur(12px);
             overflow: auto;
             transition:0.5s;
             animation-name: submerge;
@@ -131,6 +131,18 @@
             height: 90%;
             border:solid 1px #414C6B;
             overflow-y: auto;
+        }
+
+        .backDark {
+            left:0;
+            top:0;
+            z-index:1000;
+            position: absolute;
+            background-color: rgb(0 0 0 / 75%);
+            width:100%;
+            height:100%;
+            display: none;
+            backdrop-filter: blur(12px);
         }
 
         #svg-map path { fill:#414C6B }
@@ -548,9 +560,11 @@
             if (value) {
                 var locale = document.getElementById('select_state').value;
                 document.getElementById("mailFrame").style.display = "block"; 
+                document.getElementById("backDark").style.display = "block"; 
                 document.getElementById("select_mail").value="";
                 document.getElementById("tableMail").innerHTML=("<center><h2>"+getTitle(locale)+"</h2></center>"+document.getElementById("desmatamentoTable").innerHTML+"").replace(moreAndLess,"");
             } else {
+                document.getElementById("backDark").style.display = "none"; 
                 document.getElementById("mailFrame").style.display = "none";        
             }
         }
@@ -609,6 +623,7 @@
                 <button onclick="mailFrame(false);">Cancelar</button>
                 <center><div id="tableMail"></div></center>
             </div>   
+            <div id="backDark" class="backDark"></div>
         </center> 
         <div id="mainContent">
             <div class="select_stateDIV" >
