@@ -317,7 +317,7 @@
 
         function tabelaTodosEstado () {           
             var table = "";
-            var thStyle = "style=\"background-color:rgba(40, 93, 51,0.25);\"";
+            var thStyle = "style=\"background-color:rgba(65,76,107,0.25);\"";
             $.ajax({
                 url: 'api/queimadas/',
                 method: 'GET',
