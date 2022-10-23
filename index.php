@@ -557,7 +557,8 @@
         }
         
         function mailFrame(value) {
-            html = "<html> <head></head> <body>#body</body> </html>";
+            var style = "<style>"+document.getElementById('tableStyle').innerHTML+"</style>";
+            html = "<html> <head>"+style+"</head> <body>#body</body> </html>";
             if (value) {
                 var locale = document.getElementById('select_state').value;
                 document.getElementById("mailFrame").style.display = "block"; 
@@ -583,8 +584,7 @@
         function enviarEmail () {
             var locale = document.getElementById('select_state').value;
             var title = getTitle(locale);
-            var style = "<style>"+document.getElementById('tableStyle').innerHTML+"</style>";
-            var content = "<center>"+style+"<h2>"+title+"</h2>"+document.getElementById("desmatamentoTable").innerHTML+"</center>";
+            var content = "<center><h2>"+title+"</h2>"+document.getElementById("desmatamentoTable").innerHTML+"</center>";
             var mail = document.getElementById("email").value;
 
             if (IsEmail(mail)) {
