@@ -145,7 +145,7 @@
             position:fixed;
             margin: 10px;
             width:40px;
-            height:90px;
+            height:130px;
             opacity:0.5;
             animation: submerge;
         }
@@ -228,6 +228,16 @@
             }
             .mailFrame input, .mailFrame button {
                 font-size: 54px; 
+            }
+
+            .buttonIncrease {
+                width:60px;
+                height:110px;
+            }
+
+            .buttonIncrease #more, .buttonIncrease #less {
+                width:60px;
+                height:60px;
             }
         }
     </style>    
@@ -361,11 +371,11 @@
         function changeTableTextSize (value) {
             var fontSize = parseInt($('td').css('font-size').replace("px",""));
             if (value){
-                $('td').css('font-size',(fontSize+1)+'px');
-                $('th').css('font-size',(fontSize+1)+'px');
+                $('td').css('font-size',(fontSize+5)+'px');
+                $('th').css('font-size',(fontSize+5)+'px');
             } else {
-                $('td').css('font-size',(fontSize-1)+'px');
-                $('th').css('font-size',(fontSize-1)+'px');
+                $('td').css('font-size',(fontSize-5)+'px');
+                $('th').css('font-size',(fontSize-5)+'px');
             }
         }
 
