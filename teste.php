@@ -14,4 +14,7 @@
             <input type="submit" value="Submit">
         </form>
     </body>
+    <?php 
+        echo hash("sha512",rand().":".time());
+    ?>
 </html>

@@ -605,7 +605,7 @@
         }
 
         function getTitle (locale) {
-            if(ufJSON['LOCALE'][locale]) {
+            if(ufJSON['UF'][locale]) {
                 return ufJSON['UF'][locale];
             } else if (ufJSON['REGIAO'][locale]) {
                 return ufJSON['REGIAO'][locale];     
