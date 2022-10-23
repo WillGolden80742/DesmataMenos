@@ -473,8 +473,12 @@
         }
         function enviarEmail () {
             var locale = document.getElementById('select_state').value;
+            if (locale == '') {
+                locale="Todos estados";
+            }
             var content = "<center><h2>"+locale+"</h2>"+document.getElementById("desmatamentoTable").innerHTML+"</center>";
             var mail = document.getElementById("email").value;
+
             if (IsEmail(mail)) {
                 $.ajax({
                     url: 'api/sendEmail.php?',
