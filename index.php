@@ -114,6 +114,8 @@
             margin: 0;
             backdrop-filter: blur(12px);
             overflow: auto;
+            transition:0.5s;
+            animation-name: example;
         }
         .mailFrame input, .mailFrame button {
            display: inline-block;
