@@ -48,6 +48,7 @@
             overflow-y:scroll;
             border:solid 1px #414C6B;   
         }
+
         td , center { border:solid 2px #0038ff14 }
         th, td {
             padding:5px;
@@ -82,6 +83,7 @@
             margin-bottom: 10px;
             border:solid 1px #414C6B;
             padding:5px;
+            width:98.8%;
         }
         .desmatamentoTable, .estateMap {
             float: left;
@@ -145,7 +147,7 @@
             }
             .desmatamentoTable, .estateMap {
                 margin:0;
-                width: 99.5%;
+                width: 100%;
                 align-items: center;
                 right: 0;
                 left: 0;
