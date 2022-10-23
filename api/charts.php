@@ -66,14 +66,14 @@
                 var desmataData = [];
                 var titles = [];
                 var firstUF = "";
-                Object.keys(json['UF']).forEach(function(uf){
+                Object.keys(json).forEach(function(uf){
                     firstUF = uf;
                 });   
-                Object.keys(json['UF'][firstUF]['ANO']).forEach(function(itemline){
+                Object.keys(json[firstUF]['ANO']).forEach(function(itemline){
                     somaEstado = 0;
-                    Object.keys(json['UF']).forEach(function(uf){
+                    Object.keys(json).forEach(function(uf){
                         if (itemline != "Máximo*" && itemline != "Média*" && itemline != "Mínimo*") {
-                            total = json['UF'][uf]['ANO'][itemline]['Total'].replace('-','');
+                            total = json[uf]['ANO'][itemline]['Total'].replace('-','');
                             somaEstado+=parseInt(total);
                         }
                     });    
