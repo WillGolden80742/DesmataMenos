@@ -355,7 +355,6 @@
                     document.getElementById(minArr[i]).style.backgroundColor = "rgba(0,0,255,0.25)";                   
                 }
             });                    
-            //document.getElementById('desmatamentoTable').innerHTML="<center><h1>NO CONTENT</h1></center>";            
         } 
 
         function tabela () {
@@ -446,6 +445,9 @@
                 dados();
             }
             firstIteration=true;
+            var tagEstilo = "//mapa-estilo";
+            var styleMapa = (document.getElementById("styleTable").innerHTML).split(tagEstilo)[0];
+            document.getElementById("styleTable").innerHTML=styleMapa;
             if (uf == "") {
                 Object.keys(ufJSON['UF']).forEach(function(itemline){
                     if(firstIteration) {
@@ -454,6 +456,7 @@
                     document.getElementById("styleTable").innerHTML+="#"+itemline+" path { fill:#1a73e8 !important; cursor:pointer }  #"+itemline+" .circle { fill:#2d3038 !important; cursor:pointer }";
                 });
             } else {
+                document.getElementById("styleTable").innerHTML+=tagEstilo;
                 Object.keys(ufJSON['UF']).forEach(function(itemline){
                     if(firstIteration) {
                         firstIteration=false;
