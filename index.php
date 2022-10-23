@@ -476,14 +476,19 @@
 
         function enviarEmail () {
             var locale = document.getElementById('select_state').value;
-            if (locale == '') {
-                locale="todos estados";
+            var title = "";
+            if(ufJSON['UF'][locale]) {
+                title=ufJSON['UF'][locale];
+            } else if (ufJSON['REGIAO'][locale]) {
+                title=ufJSON['REGIAO'][locale];     
+            } else if (ufJSON['BIOMA'][locale]) {
+                title=ufJSON['BIOMA'][locale];    
             }
             var content = "<center><h2>"+locale+"</h2>"+document.getElementById("desmatamentoTable").innerHTML+"</center>";
             var mail = document.getElementById("email").value;
 
             if (IsEmail(mail)) {
-                encaminhar(locale,content,mail);
+                encaminhar(title,content,mail);
             } else {
                 alert("E-mail invalido!");                
             }
