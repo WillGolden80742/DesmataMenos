@@ -90,15 +90,8 @@
             });
         }   
         function uf () {
-            $.ajax({
-                url: 'locale',
-                method: 'GET',
-                dataType: 'html'
-            }).done(function(text) { 
-                UFTitle = JSON.parse(text);
-                UFTitle = '<?php echo $state; ?>';
-                UFTitle += " (total ano a ano km²)";
-            });
+            UFTitle = '<?php echo $state; ?>';
+            UFTitle += " (total ano a ano km²)";
         }        
         function chart (desmataData, titles) {
             const ctx = document.getElementById('myChart').getContext('2d');
