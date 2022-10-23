@@ -59,7 +59,6 @@
 
         .desmatamentoTable {
             width: 61%;
-            border-radius:10px;
             border:solid 2px rgb(40, 93, 51);
             overflow-y: scroll;
         }
@@ -68,7 +67,6 @@
             background-color:white;
             width: 37%; 
             margin-left:10px;
-            border-radius:10px;
             border:solid 2px rgb(40, 93, 51);
             display: inline-block;  
             overflow: auto;
@@ -76,7 +74,6 @@
         .select_state, .select_save, .select_dados, .select_mail {
             border:solid 2px rgb(40, 93, 51);
             padding: 2px;
-            border-radius:10px;
             box-shadow: 0px 0px 10px rgb(0 0 0 / 25%);
             background-color: #1d8634;
             color:#fff;
@@ -88,10 +85,7 @@
             background-color: #fff;
             color:black;
         }
-
-        .select_stateDIV {
-            margin-bottom: 10px;
-        }
+        
         .desmatamentoTable, .estateMap {
             float: left;
             top: 0;
