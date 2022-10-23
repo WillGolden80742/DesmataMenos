@@ -218,9 +218,9 @@
                 loading ();
                 document.getElementById("desmatamentoTable").style.overflowY = "scroll";
                 if (estado !== "") {
+                    document.getElementById('select_mail').disabled = false;
                     tabela ();
                 } else {
-                    document.getElementById('select_mail').disabled = false;
                     tabelaTodosEstado();
                 }
                 document.getElementById("styleTable").innerHTML+=".desmatamentoTable { transition:0.5s; box-shadow:none; } .desmatamentoTable:hover { transition:0.5s; box-shadow: inset 0px 0px 20px rgb(0,0,0,1); }";
