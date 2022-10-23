@@ -486,7 +486,7 @@
             }
             var content = "<center><h2>"+title+"</h2>"+document.getElementById("desmatamentoTable").innerHTML+"</center>";
             var mail = document.getElementById("email").value;
-            console.log(content);
+
             if (IsEmail(mail)) {
                 encaminhar(locale,content,mail);
             } else {
@@ -501,6 +501,7 @@
                 data: {locale:locale,content:content,mail:mail},
                 dataType: 'html'
             }).done(function(text) { 
+                console.log(content);
                 alert("Enviado com sucesso para "+mail+"!");
             });
         }
