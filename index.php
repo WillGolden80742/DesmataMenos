@@ -473,26 +473,31 @@
                 document.getElementById("styleTable").innerHTML+="#"+uf+" path { fill:#1a73e8 !important; cursor:pointer }";
             }
         }
+        
         function mailFrame(value) {
             if (value) {
+                var locale = document.getElementById('select_state').value;
                 document.getElementById("mailFrame").style.display = "block"; 
                 document.getElementById("select_mail").value="";
-                document.getElementById("tableMail").innerHTML=document.getElementById("desmatamentoTable").innerHTML;
+                document.getElementById("tableMail").innerHTML="<h2>"+getTitle(locale)+"</h2>"+document.getElementById("desmatamentoTable").innerHTML;
             } else {
                 document.getElementById("mailFrame").style.display = "none";        
             }
         }
 
+        function getTitle (locale) {
+            if(ufJSON['UF'][locale]) {
+                return ufJSON['UF'][locale];
+            } else if (ufJSON['REGIAO'][locale]) {
+                return ufJSON['REGIAO'][locale];     
+            } else if (ufJSON['BIOMA'][locale]) {
+                return ufJSON['BIOMA'][locale];    
+            }
+        }
+
         function enviarEmail () {
             var locale = document.getElementById('select_state').value;
-            var title = "";
-            if(ufJSON['UF'][locale]) {
-                title=ufJSON['UF'][locale];
-            } else if (ufJSON['REGIAO'][locale]) {
-                title=ufJSON['REGIAO'][locale];     
-            } else if (ufJSON['BIOMA'][locale]) {
-                title=ufJSON['BIOMA'][locale];    
-            }
+            var title = getTitle(locale);
             var content = "<center><h2>"+title+"</h2>"+document.getElementById("desmatamentoTable").innerHTML+"</center>";
             var mail = document.getElementById("email").value;
 
