@@ -558,6 +558,7 @@
         }
         
         function mailFrame(value) {
+            html = "<html> <head></head> <body>#body</body> </html>";
             if (value) {
                 var locale = document.getElementById('select_state').value;
                 document.getElementById("mailFrame").style.display = "block"; 
@@ -565,7 +566,7 @@
                 document.getElementById("select_mail").value="";
                 $('td').css('font-size',defaultFontSize);
                 $('th').css('font-size',defaultFontSize);
-                document.getElementById("tableMail").innerHTML=("<center><h2>"+getTitle(locale)+"</h2></center>"+document.getElementById("desmatamentoTable").innerHTML+"").replace(moreAndLess,"");
+                document.getElementById("tableMail").innerHTML=html.replace("#body",("<center><h2>"+getTitle(locale)+"</h2></center>"+document.getElementById("desmatamentoTable").innerHTML+"").replace(moreAndLess,""));
             } else {
                 document.getElementById("backDark").style.display = "none"; 
                 document.getElementById("mailFrame").style.display = "none";        
