@@ -169,7 +169,7 @@
             border:solid 2px #fff;
             margin-bottom:5px;
             background-color: rgba(255,255,255,0.75);
-            box-shadow: 0px 0px 20px rgb(0 0 0 / 25%);
+            box-shadow: 0px 0px 20px rgb(0 0 0 / 50%);
         }
 
         .buttonIncrease:hover {
