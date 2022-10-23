@@ -101,14 +101,10 @@
             z-index: 1000;
             position:fixed;
             background:rgba(255,255,255,0.5);
-            width:90%;
-            height:85%;
-            top:5%;
-            bottom:5%;
-            left:5%;
-            right:4%;
+            width:98.5%;
+            height:95%;
+            padding-top:1%;
             border:solid 1px #414C6B;
-            padding:1%;
             box-shadow: 0px 0px 20px rgb(0 0 0 / 25%);
             margin: 0;
             backdrop-filter: blur(12px);
@@ -121,7 +117,6 @@
            background: none;
            border:solid 1px #414C6B;
            padding:5px; 
-           border-radius:10px;
            margin-bottom:10px;
            background-color: white;
         }
@@ -178,6 +173,16 @@
             .desmatamentoTable, .estateMap {
                 height:40.5%;
             }
+            .mailFrame {
+                left: 0;
+                top:0;
+                width:100%;
+                height:100%;
+            }  
+            .mailFrame div {
+                width:93%;
+                height:94%;
+            }  
         }
     </style>    
 
