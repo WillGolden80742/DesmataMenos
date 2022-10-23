@@ -379,9 +379,15 @@
                 var text = JSON.parse(text)['UF'][estado];
                 var table = "<table>\n<thead>";
                 var thStyle = "style=\"background-color:rgba(40, 93, 51,0.25);\"";
-                title = text['ANO']['1998'];
+                var titleAno = text['ANO'];
+                var firstAno = "";
+                Object.keys(titleAno).forEach(function(item){ 
+                    firstAno=item;
+                    return true;
+                });
+                console.log(firstAno);
                 table += "<tr><th "+thStyle+">Ano</th>";
-                Object.keys(title).forEach(function(item){ 
+                Object.keys(titleAno[firstAno]).forEach(function(item){ 
                     table += "<th "+thStyle+">"+item+"</th>";
                 });
                 table += "</tr>\n";
