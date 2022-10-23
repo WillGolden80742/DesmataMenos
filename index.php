@@ -153,7 +153,6 @@
         #svg-map a:hover path{ fill:#1a73e8 !important }
         #svg-map .circle { fill:#2d3038; }
         #amazonas path{ fill:#1a73e8 !important }
-
         .buttonIncrease {
             position:fixed;
             margin: 10px;
@@ -303,6 +302,7 @@
         function init () {
             select ();
             tabela ();
+            $('#'+estadoDefault+' path').css('fill:','#1a73e8');
             <?php 
                 $currentURL = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
                 $arrURL = explode("/",$currentURL);
@@ -572,7 +572,7 @@
             var styleMapa = (document.getElementById("styleTable").innerHTML).split(tagEstilo)[0];
             document.getElementById("styleTable").innerHTML=styleMapa;
             if (uf == "") {
-                Object.keys(ufJSON['LOCALE']).forEach(function(itemline){
+                Object.keys(ufJSON['UF']).forEach(function(itemline){
                     if(firstIteration) {
                         firstIteration=false;
                     }
@@ -580,7 +580,7 @@
                 });
             } else {
                 document.getElementById("styleTable").innerHTML+=tagEstilo;
-                Object.keys(ufJSON['LOCALE']).forEach(function(itemline){
+                Object.keys(ufJSON['UF']).forEach(function(itemline){
                     if(firstIteration) {
                         firstIteration=false;
                     }
@@ -606,7 +606,7 @@
 
         function getTitle (locale) {
             if(ufJSON['LOCALE'][locale]) {
-                return ufJSON['LOCALE'][locale];
+                return ufJSON['UF'][locale];
             } else if (ufJSON['REGIAO'][locale]) {
                 return ufJSON['REGIAO'][locale];     
             } else if (ufJSON['BIOMA'][locale]) {
