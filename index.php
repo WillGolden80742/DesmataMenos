@@ -479,7 +479,7 @@
                 var locale = document.getElementById('select_state').value;
                 document.getElementById("mailFrame").style.display = "block"; 
                 document.getElementById("select_mail").value="";
-                document.getElementById("tableMail").innerHTML="<center><h2>"+getTitle(locale)+"</h2>"+document.getElementById("desmatamentoTable").innerHTML+"</center>";
+                document.getElementById("tableMail").innerHTML="<center><h2>"+getTitle(locale)+"</h2></center>"+document.getElementById("desmatamentoTable").innerHTML+"";
             } else {
                 document.getElementById("mailFrame").style.display = "none";        
             }
