@@ -439,9 +439,9 @@
                 table=table.replace("#thead",thead);
                 table=table.replace("#tbody",tbody);
                 setTable(table);
+                document.getElementById("tableStyle").innerHTML="";
                 for(let i = 0; i < maxArr.length; i++ ) {
-                    document.getElementById(maxArr[i]).style.backgroundColor = "rgba(255,0,0,0.25)";
-                    document.getElementById(minArr[i]).style.backgroundColor = "rgba(0,0,255,0.25)";                   
+                    document.getElementById("tableStyle").innerHTML+="#"+maxArr[i]+" {background-color:rgba(255,0,0,0.25);} #"+minArr[i]+" { background-color:rgba(0,0,255,0.25) } ";           
                 }
             });                    
         } 
@@ -503,9 +503,9 @@
                 });
                 table+="</tbody></table>";
                 setTable(table);
+                document.getElementById("tableStyle").innerHTML="";
                 for(let i = 0; i < maxArr.length; i++ ) {
-                    document.getElementById(maxArr[i]).style.backgroundColor = "rgba(255,0,0,0.25)";
-                    document.getElementById(minArr[i]).style.backgroundColor = "rgba(0,0,255,0.25)";                   
+                    document.getElementById("tableStyle").innerHTML+="#"+maxArr[i]+" {background-color:rgba(255,0,0,0.25);} #"+minArr[i]+" { background-color:rgba(0,0,255,0.25) } ";           
                 }
             });
         }
