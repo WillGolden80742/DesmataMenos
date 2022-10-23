@@ -564,8 +564,8 @@
                 document.getElementById("mailFrame").style.display = "block"; 
                 document.getElementById("backDark").style.display = "block"; 
                 document.getElementById("select_mail").value="";
-                $('td').css('font-size',defaultFontSize);
-                $('th').css('font-size',defaultFontSize);
+                //$('td').css('font-size',defaultFontSize);
+                //$('th').css('font-size',defaultFontSize);
                 document.getElementById("tableMail").innerHTML=html.replace("#body",("<center><h2>"+getTitle(locale)+"</h2></center>"+document.getElementById("desmatamentoTable").innerHTML+"").replace(moreAndLess,""));
             } else {
                 document.getElementById("backDark").style.display = "none"; 
