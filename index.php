@@ -383,9 +383,7 @@
                 var firstAno = "";
                 Object.keys(titleAno).forEach(function(item){ 
                     firstAno=item;
-                    return true;
                 });
-                console.log(firstAno);
                 table += "<tr><th "+thStyle+">Ano</th>";
                 Object.keys(titleAno[firstAno]).forEach(function(item){ 
                     table += "<th "+thStyle+">"+item+"</th>";

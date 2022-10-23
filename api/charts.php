@@ -68,7 +68,6 @@
                 var firstUF = "";
                 Object.keys(json['UF']).forEach(function(uf){
                     firstUF = uf;
-                    return true;
                 });   
                 Object.keys(json['UF'][firstUF]['ANO']).forEach(function(itemline){
                     somaEstado = 0;
