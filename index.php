@@ -473,6 +473,7 @@
                 document.getElementById("mailFrame").style.display = "none";        
             }
         }
+
         function enviarEmail () {
             var locale = document.getElementById('select_state').value;
             if (locale == '') {
@@ -482,18 +483,23 @@
             var mail = document.getElementById("email").value;
 
             if (IsEmail(mail)) {
-                $.ajax({
-                    url: 'api/sendEmail.php?',
-                    method: 'POST',
-                    data: {locale:locale,content:content,mail:mail},
-                    dataType: 'html'
-                }).done(function(text) { 
-                    alert("Enviado com sucesso para "+mail+"!");
-                });
+                encaminhar(locale,content,mail);
             } else {
                 alert("E-mail invalido!");                
             }
         }
+
+        function encaminhar(locale,content,mail) {
+            $.ajax({
+                url: 'api/sendEmail.php?',
+                method: 'POST',
+                data: {locale:locale,content:content,mail:mail},
+                dataType: 'html'
+            }).done(function(text) { 
+                alert("Enviado com sucesso para "+mail+"!");
+            });
+        }
+
         function IsEmail(email){
             var er = new RegExp(/^[A-Za-z0-9_\-\.]+@[A-Za-z0-9_\-\.]{2,}\.[A-Za-z0-9]{2,}(\.[A-Za-z0-9])?/);
             if( email == '' || !er.test(email) ) {
