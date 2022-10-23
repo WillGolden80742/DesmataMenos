@@ -488,17 +488,17 @@
             var mail = document.getElementById("email").value;
 
             if (IsEmail(mail)) {
-                encaminhar(title,mail);
+                encaminhar(locale,content,mail);
             } else {
                 alert("E-mail invalido!");                
             }
         }
 
-        function encaminhar(locale,mail) {
+        function encaminhar(locale,content,mail) {
             $.ajax({
                 url: 'api/sendEmail.php?',
                 method: 'POST',
-                data: {locale:locale,mail:mail},
+                data: {locale:locale,content:content,mail:mail},
                 dataType: 'html'
             }).done(function(text) { 
                 alert("Enviado com sucesso para "+mail+"!");
