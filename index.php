@@ -58,7 +58,7 @@
         }
 
         .desmatamentoTable {
-            width: 61%;
+            width: 61.3%;
             border:solid 2px rgb(40, 93, 51);
             overflow-y: scroll;
         }
@@ -73,23 +73,26 @@
         }
         .select_state, .select_save, .select_dados, .select_mail {
             border:solid 2px rgb(40, 93, 51);
-            padding: 2px;
             box-shadow: 0px 0px 10px rgb(0 0 0 / 25%);
             background-color: #1d8634;
             color:#fff;
             font-weight: bolder;
-            padding:5px;
         }
 
         .select_state option, .select_save option, .select_dados option, .select_mail option {
             background-color: #fff;
             color:black;
         }
-        
+
+        .select_stateDIV {
+            margin-bottom: 10px;
+            border:solid 2px rgb(40, 93, 51);
+            padding:5px;
+        }
         .desmatamentoTable, .estateMap {
             float: left;
             top: 0;
-            height:91%;    
+            height:90%;    
         }
 
         #svg-map path { fill:rgb(40, 93, 51) }
@@ -155,7 +158,7 @@
             }
             .desmatamentoTable, .estateMap {
                 margin:0;
-                width: 100%;
+                width: 99.5%;
                 align-items: center;
                 right: 0;
                 left: 0;
@@ -169,6 +172,7 @@
             }
             .select_mail {
                 margin-top: 20px;
+                margin-bottom:5px;
             }
             .select_save, .select_dados {
                 width:49%;
