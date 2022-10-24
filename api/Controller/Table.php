@@ -3,6 +3,9 @@
     class Table {
         private $value;
         function __construct($value) {
+            $value = preg_replace('/h2/','',$value);
+            $value = preg_replace('/center/','',$value);
+            $value = preg_replace('/Ano/','',$value);
             $value = preg_replace('/Ano/','',$value);
             $value = preg_replace('/Janeiro/','',$value);
             $value = preg_replace('/Fevereiro/','',$value);

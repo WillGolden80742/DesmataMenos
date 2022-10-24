@@ -295,7 +295,7 @@
         var estado = "";
         var estadoDefault = "amazonas";
         var ufJSON = "";
-        var moreAndLess;
+        var moreAndLess = "";
         var defaultFontSize = $('*').css('font-size');
         var tableCache = "";
 
@@ -618,9 +618,8 @@
         function enviarEmail () {
             var locale = document.getElementById('select_state').value;
             var title = getTitle(locale);
-            var content = "<center><h2>"+title+"</h2>"+document.getElementById("desmatamentoTable").innerHTML+"</center>";
+            var content = (document.getElementById("desmatamentoTable").innerHTML).replace(moreAndLess,"");
             var mail = document.getElementById("email").value;
-
             if (IsEmail(mail)) {
                 encaminhar(locale,content,mail);
             } else {
@@ -635,7 +634,7 @@
                 data: {locale:locale,content:content,mail:mail},
                 dataType: 'html'
             }).done(function(text) { 
-                alert("Enviado com sucesso para "+mail+"!");
+                alert(text+" ("+mail+")");
                 mailFrame(false);    
             });
         }
