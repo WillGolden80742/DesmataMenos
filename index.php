@@ -546,20 +546,6 @@
             });
         }
 
-        function mapRefresh (value) {
-            var url = "https://www.google.com/maps/embed?pb=";
-            if (mapas == "") {
-                $.ajax({
-                    url: 'api/mapas.php?',
-                    method: 'GET',
-                    dataType: 'html'
-                }).done(function(text) { 
-                    mapas = JSON.parse(text)['LOCALE'];
-                });
-            }  
-            document.getElementById("estateMap").src=url+mapas[value];
-        }
-
         function selectMap (uf) {
             selectMapRefreshTable(uf,true);
         }
