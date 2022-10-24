@@ -634,7 +634,13 @@
                 data: {locale:locale,content:content,mail:mail},
                 dataType: 'html'
             }).done(function(text) { 
-                alert(text+" ("+mail+")");
+                jsonMessage =  JSON.parse(text);
+                if (jsonMessage[1] == true) {
+                    alert(jsonMessage[0]+" ("+mail+")");
+                } else {
+                    alert(jsonMessage[0]+" ("+mail+")");
+                    location.reload();
+                }  
                 mailFrame(false);    
             });
         }
