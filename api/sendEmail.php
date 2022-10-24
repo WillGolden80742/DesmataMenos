@@ -13,5 +13,4 @@
     } else {
         echo json_encode(Array("Documento em formato incorreto!",false));
     }
-    #echo  $locale.$mail;
 ?>
