@@ -351,7 +351,7 @@
                     switch (localeItem) {
                         case "UF":
                             tipo="Estado";
-                            ufJSON = locale;
+
                             break;
                         case "REGIAO":
                             tipo="Região";
@@ -360,6 +360,7 @@
                             tipo="Bioma";
                             break;
                     }
+                    ufJSON = locale;
                     Object.keys(locale[localeItem]).forEach(function(item) { 
                         if (item == estadoDefault) {
                             selected = "selected=\"selected\"";
@@ -605,6 +606,14 @@
             }
         }
 
+        function setUfJSON() {
+            ufJSON = JSON.parse(text);
+        } 
+
+        function getUfJSON() {
+            return ufJSON;
+        }
+
         function getTitle (locale) {
             if(ufJSON['UF'][locale]) {
                 return ufJSON['UF'][locale];
@@ -621,7 +630,7 @@
             var content = (document.getElementById("desmatamentoTable").innerHTML).replace(moreAndLess,"");
             var mail = document.getElementById("email").value;
             if (IsEmail(mail)) {
-                encaminhar(locale,content,mail);
+                encaminhar(title,content,mail);
             } else {
                 alert("E-mail invalido!");            
             }

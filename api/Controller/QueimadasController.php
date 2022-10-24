@@ -25,6 +25,27 @@
             }
         }
 
+        function pertenceAoLocale ($value) {
+            $currentURL = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
+            $arrURL = explode("/",$currentURL);
+            $sizeArrURL = count ($arrURL)-1;
+            $currentURL = str_replace($arrURL[$sizeArrURL],"",$currentURL);
+            $arrayLocale = json_decode(file_get_contents($currentURL."locale.php"));
+            $conjunto = "";
+            foreach ($arrayLocale as $locale) {
+                foreach ($locale as $l) {
+                    $conjunto.=$l;
+                }
+            }
+            $conjuntoSize = strlen($conjunto);
+            $conjuntoSizeNew = strlen(str_replace($value,"",$conjunto));
+            if ($conjuntoSize > $conjuntoSizeNew) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         function gerarChaveEstado ($estados) {
             $conjuntoLocale="";
             foreach ($estados as $estado) {
