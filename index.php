@@ -297,6 +297,7 @@
         var ufJSON = "";
         var moreAndLess;
         var defaultFontSize = $('*').css('font-size');
+        var tableCache = "";
 
         init ();
         function init () {
