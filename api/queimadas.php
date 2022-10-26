@@ -15,15 +15,13 @@
 
     $json = "{\"LOCALE\" : {";
     foreach ($estados as $estado) {
-        $estado=explode(",",$estado);
-        $conjuntoLocale = $queimadas->gerarChaveEstado($estado);
-        $queimadasCache = $queimadas->dateCache($queimadas->dataFormatada(),$conjuntoLocale);
+        $queimadasCache = $queimadas->dateCache($queimadas->dataFormatada(),$estado);
     
         if (strcmp($queimadasCache,"1")==0) {
-            $json .= $queimadas->cache($conjuntoLocale);
+            $json .= $queimadas->cache($estado);
         } else {
             $jsonString = $queimadas->baixarDados($estado);
-            $json .= $queimadas->cache($conjuntoLocale);
+            $json .= $queimadas->cache($estado);
         }
         $json.=",";
     }
