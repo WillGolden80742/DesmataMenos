@@ -11,6 +11,6 @@
         echo json_encode(Array("Envio com sucesso!",true));
 		mail($mail,"Dado de ".$locale,"<center><h2>".$locale."</h2>".$content."</center>",$headers);
     } else {
-        echo json_encode(Array("Documento em formato incorreto!",false));
+        echo json_encode(Array("Documento em formato incorreto!\n Content : ".new Table($content),false));
     }
 ?>
