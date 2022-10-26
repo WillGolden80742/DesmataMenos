@@ -15,9 +15,9 @@
 
     $json = "{\"LOCALE\" : {";
     foreach ($estados as $estado) {
-        $queimadasCache = $queimadas->dateCache($queimadas->dataFormatada(),$estado);
+        $queimadasCache = $queimadas->hasDateCache($queimadas->dataFormatada(),$estado);
     
-        if (strcmp($queimadasCache,"1")==0) {
+        if ($queimadasCache) {
             $json .= $queimadas->cache($estado);
         } else {
             $jsonString = $queimadas->baixarDados($estado);

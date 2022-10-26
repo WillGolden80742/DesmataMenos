@@ -11,10 +11,15 @@
             $this->queimadas->createCache($locale,$json);
         }
 
-        function dateCache ($date,$locale) {
-            $result = $this->queimadas->dateCache($date,$locale);
+        function hasDateCache ($date,$locale) {
+            $result = $this->queimadas->hasDateCache($date,$locale);
             foreach ($result as $r) {
                 return $r;
+            }
+            if (strcmp($r,"1")==0) {
+                return true;
+            } else {
+                return false;  
             }
         }
 
