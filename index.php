@@ -65,7 +65,7 @@
                     <option value="">Receber por e-mail</option>
                     <option>Enviar</option>
                 </select>
-                <a href="https://queimadas.dgi.inpe.br/queimadas/portal-static/estatisticas_estados/" class="INPE" ><img src="assets/images/inpe.svg" alt="INPE" title="INPE"> Queimadas</a>
+                <a href="https://queimadas.dgi.inpe.br/queimadas/portal-static/estatisticas_estados/" class="INPE" target="_blank" ><img src="assets/images/inpe.svg" alt="INPE" title="INPE"> Queimadas</a>
         
             </div>
 
