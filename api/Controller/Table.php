@@ -42,7 +42,7 @@
             $value = preg_replace('/th/','',$value);
             $value = preg_replace('/td/','',$value); 
             $value = preg_replace('/[^[:alpha:]_]/','',$value);  
-            $value = str_replace("MáximoMédiaMínimo", "", $value);    
+            $value = str_replace("MximoMdiaMnimo", "", $value);    
             $this->value=$value;
         }
         public function __toString():string {
