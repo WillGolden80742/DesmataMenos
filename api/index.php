@@ -38,72 +38,101 @@
         </h3>
         <hr>
         <h3> 
-        <h1>UF</h1>
+        <h1>LOCALE</h1>
         <hr>
         <h3> 
-            uf/ - Acesse os valores de todas unidades federativas do Brasil
+            locale/ - Acesse todos os valores de todos estados regiões e biomas do brasil do Brasil
         </h3>  
         <hr>
         <h3>         
             Opção de estados : <br>           
         </h3>    
         <p>
-                "":
-                "Todos estados"<br>
-                "acre":
-                "Acre" <br>    
-                "alagoas":
-                "Alagoas" <br>      
-                "amapa":
-                "Amapá" <br>    
-                "amazonas":
-                "Amazonas" <br>    
-                "bahia":
-                "Bahia" <br>    
-                "ceara":
-                "Ceará" <br>    
-                "distrito_federal":
-                "Distrito Federal" <br>    
-                "espirito_santo":
-                "Espírito Santo" <br>    
-                "goias":
-                "Goiás" <br>    
-                "maranhao":
-                "Maranhão" <br>     
-                "mato_grosso":
-                "Mato Grosso" <br>    
-                "mato_grosso_do_sul":
-                "Mato Grosso do Sul" <br>   
-                "minas_gerais":
-                "Minas Gerais" <br>   
-                "para":
-                "Pará" <br>    
-                "paraiba":
-                "Paraíba" <br>    
-                "parana":
-                "Paraná" <br>    
-                "pernambuco":
-                "Pernambuco" <br>    
-                "piaui":
-                "Piauí" <br>    
-                "rio_de_janeiro":
-                "Rio de Janeiro" <br>   
-                "rio_grande_do_norte":
-                "Rio Grande do Norte" <br>   
-                "rio_grande_do_sul":
-                "Rio Grande do Sul" <br>   
-                "rondonia":
-                "Rondônia" <br>    
-                "roraima":
-                "Roraima" <br>    
-                "santa_catarina":
-                "Santa Catarina" <br>    
-                "sao_paulo":
-                "São Paulo" <br>    
-                "sergipe":
-                "Sergipe" <br> 
-                "tocantins":
-                "Tocantins" 
+            "" :
+            "Todos estados"<br>
+            "acre" :
+            "Acre" <br>    
+            "alagoas" :
+            "Alagoas" <br>      
+            "amapa" :
+            "Amapá" <br>    
+            "amazonas" :
+            "Amazonas" <br>    
+            "bahia" :
+            "Bahia" <br>    
+            "ceara" :
+            "Ceará" <br>    
+            "distrito_federal" :
+            "Distrito Federal" <br>    
+            "espirito_santo" :
+            "Espírito Santo" <br>    
+            "goias" :
+            "Goiás" <br>    
+            "maranhao" :
+            "Maranhão" <br>     
+            "mato_grosso" :
+            "Mato Grosso" <br>    
+            "mato_grosso_do_sul" :
+            "Mato Grosso do Sul" <br>   
+            "minas_gerais" :
+            "Minas Gerais" <br>   
+            "para" :
+            "Pará" <br>    
+            "paraiba" :
+            "Paraíba" <br>    
+            "parana" :
+            "Paraná" <br>    
+            "pernambuco" :
+            "Pernambuco" <br>    
+            "piaui" :
+            "Piauí" <br>    
+            "rio_de_janeiro" :
+            "Rio de Janeiro" <br>   
+            "rio_grande_do_norte" :
+            "Rio Grande do Norte" <br>   
+            "rio_grande_do_sul" :
+            "Rio Grande do Sul" <br>   
+            "rondonia" :
+            "Rondônia" <br>    
+            "roraima" :
+            "Roraima" <br>    
+            "santa_catarina" :
+            "Santa Catarina" <br>    
+            "sao_paulo" :
+            "São Paulo" <br>    
+            "sergipe" :
+            "Sergipe" <br> 
+            "tocantins" :
+            "Tocantins"<br> 
+            "norte" :
+            "Região Norte"<br>   
+            "nordeste" :
+            "Região Nordeste"<br>      
+            "centro-oeste" :
+            "Região Centro-oeste"<br>     
+            "sul" :
+            "Região Sul"<br>
+            "sudeste" :
+            "Região Sudeste"<br> 
+            "amazonia_legal" :
+            "Amazônia Legal"<br>  
+            "vale_do_paraiba" :
+            "Vale do Paraíba"<br>   
+            "map" :
+            "MAP"<br>              
+            "caatinga" :
+            "Caatinga"<br>        
+            "cerrado" :
+            "Cerrado"<br>    
+            "pantanal" :
+            "Pantanal"<br>   
+            "pampa" :
+            "Pampa"<br>
+            "amazonia" :
+            "Amazônia"<br> 
+            "mata_atlantica" :
+            "Mata Atlântica"<br> 
+
         </p>
         <h4> Exemplo - queimadas/locale/sao_paulo </h4>
     </div>
@@ -123,20 +152,20 @@
         $urlArr[3]=strtolower($urlArr[3]);
 
         switch ($urlArr[0]) {
-            case "grafico":
+            case "grafico" :
                 $urlArr[0]='charts';    
                 redirect($currentDirectory,$urlArr);
                 break;  
-            case "locale":
+            case "locale" :
                 $urlArr[0]='locale';    
                 redirect($currentDirectory,$urlArr);
                 break;    
-            case "queimadas":
+            case "queimadas" :
                 redirect($currentDirectory,$urlArr);     
                 break;   
-            case "mapas":
-                    redirect($currentDirectory,$urlArr);     
-                    break;                 
+            case "mapas" :
+                redirect($currentDirectory,$urlArr);     
+                break;                 
         }
 
         function redirect ($directory,$url) {
