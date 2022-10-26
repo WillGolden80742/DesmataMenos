@@ -8,7 +8,7 @@
   
         function createCache ($locale,$json) {
             $datetime = new DateTime();
-            $dateFormated = $datetime->format('m/Y');
+            $dateFormated = $datetime->format('d/m/Y');
 
             $connection = $this->conFactoryPDO;
             $query = $connection->query("DELETE FROM JSONCache WHERE locale =:locale");
@@ -38,5 +38,11 @@
             $query->bindParam(':locale',$locale, PDO::PARAM_STR);
             return $connection->execute($query)->fetch(PDO::FETCH_ASSOC);
         }  
+
+        function query ($queryInsert) {
+            $connection = $this->conFactoryPDO;
+            $query = $connection->query($queryInsert);
+            $connection->execute($query);
+        }
     }
 ?>

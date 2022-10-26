@@ -13,15 +13,24 @@
         $estados = explode(",","acre,alagoas,amapa,amazonas,bahia,ceara,distrito_federal,espirito_santo,goias,maranhao,mato_grosso,mato_grosso_do_sul,minas_gerais,para,paraiba,parana,pernambuco,piaui,rio_de_janeiro,rio_grande_do_norte,rio_grande_do_sul,rondonia,roraima,santa_catarina,sao_paulo,sergipe,tocantins");
     }
 
-    $conjuntoLocale = $queimadas->gerarChaveEstado($estados);
-    $queimadasCache = $queimadas->dateCache($queimadas->dataFormatada(),$conjuntoLocale);
-
-    if (strcmp($queimadasCache,"1")==0) {
-        echo $queimadas->cache($conjuntoLocale);
-    } else {
-        $jsonString = $queimadas->baixarDados($estados);
-        echo $queimadas->cache($conjuntoLocale);
+    $json = "{\"LOCALE\" : {";
+    foreach ($estados as $estado) {
+        $estado=explode(",",$estado);
+        $conjuntoLocale = $queimadas->gerarChaveEstado($estado);
+        $queimadasCache = $queimadas->dateCache($queimadas->dataFormatada(),$conjuntoLocale);
+    
+        if (strcmp($queimadasCache,"1")==0) {
+            $json .= $queimadas->cache($conjuntoLocale);
+        } else {
+            $jsonString = $queimadas->baixarDados($estado);
+            $json .= $queimadas->cache($conjuntoLocale);
+        }
+        $json.=",";
     }
+    $json=rtrim($json,",");
+    $json.="}}";
+
+    echo $json;
 
 ?>
 

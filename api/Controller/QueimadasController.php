@@ -59,12 +59,13 @@
 
         function dataFormatada ()  {
             $datetime = new DateTime();
-            $dateFormated = $datetime->format('m/Y');
+            $dateFormated = $datetime->format('d/m/Y');
             return $dateFormated;
         }
 
+
         function baixarDados ($estados) {
-            $jsonString = "{\"LOCALE\" : {";
+            $jsonString = "";
             foreach ($estados as $estado) {
                 $site = file_get_contents("https://queimadas.dgi.inpe.br/queimadas/portal-static/csv_estatisticas/historico_estado_$estado.csv");
                 $site = substr($site, 1);
@@ -89,7 +90,7 @@
                 $jsonString .= "\n  }\n},\n";
             }
             $jsonString = rtrim( $jsonString, ",\n");
-            $jsonString .= "}}";
+            $jsonString .= "";
             $locale=$this->gerarChaveEstado ($estados);
             $this->createCache($locale,$jsonString);
         }        
