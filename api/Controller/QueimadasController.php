@@ -11,8 +11,8 @@
             $this->queimadas->createCache($locale,$json);
         }
 
-        function hasDateCache ($date,$locale) {
-            $result = $this->queimadas->hasDateCache($date,$locale);
+        function hasCacheDate ($date,$locale) {
+            $result = $this->queimadas->hasCacheDate($date,$locale);
             foreach ($result as $r) {
                 return $r;
             }
@@ -30,7 +30,7 @@
             }
         }
 
-        function pertenceAoLocale ($value) {
+        function isLocale ($value) {
             $currentURL = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
             $arrURL = explode("/",$currentURL);
             $sizeArrURL = count ($arrURL)-1;
@@ -51,21 +51,21 @@
             }
         }
 
-        function dataFormatada ()  {
+        function formatedDate ()  {
             $datetime = new DateTime();
-            $dateFormated = $datetime->format('d/m/Y');
-            return $dateFormated;
+            $formatedDate = $datetime->format('d/m/Y');
+            return $formatedDate;
         }
 
 
-        function baixarDados ($estado) {
+        function downloadData ($locale) {
             $jsonString = "";
 
-            $site = file_get_contents("https://queimadas.dgi.inpe.br/queimadas/portal-static/csv_estatisticas/historico_estado_$estado.csv");
+            $site = file_get_contents("https://queimadas.dgi.inpe.br/queimadas/portal-static/csv_estatisticas/historico_estado_$locale.csv");
             $site = substr($site, 1);
             $site = rtrim($site);
             $site = (explode(chr(10),$site));
-            $jsonString .= "\n\"$estado\" : {\n \"ANO\" : {";
+            $jsonString .= "\n\"$locale\" : {\n \"ANO\" : {";
             $count = 1;
             while ($count < sizeOf($site)) {
                 $jsonString .= "\n    \"".explode(",",$site[$count])[0]."\"";
@@ -83,7 +83,7 @@
             $jsonString = rtrim( $jsonString, ", ");
             $jsonString .= "\n  }\n}";
 
-            $this->createCache($estado,$jsonString);
+            $this->createCache($locale,$jsonString);
         }        
     }
 ?>
