@@ -7,7 +7,7 @@
     $locale = $_POST['locale'];
     $mail = $_POST['mail'];
     $queimadas = new QueimadasController();
-    if (strlen(new Table($content)) == 0 && $queimadas->pertenceAoLocale($locale)) {
+    if (strlen(new Table($content)) == 0 && $queimadas->isAtLocale($locale)) {
         echo json_encode(Array("Envio com sucesso!",true));
 		mail($mail,"Dado de ".$locale,"<center><h2>".$locale."</h2>".$content."</center>",$headers);
     } else {
