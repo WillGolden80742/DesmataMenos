@@ -30,7 +30,7 @@
             }
         }
 
-        function isAtLocale ($value) {
+        function pertenceAoLocale ($value) {
             $currentURL = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
             $arrURL = explode("/",$currentURL);
             $sizeArrURL = count ($arrURL)-1;
@@ -51,21 +51,21 @@
             }
         }
 
-        function formatedDate ()  {
+        function dataFormatada ()  {
             $datetime = new DateTime();
-            $formatedDate = $datetime->format('d/m/Y');
-            return $formatedDate;
+            $dateFormated = $datetime->format('d/m/Y');
+            return $dateFormated;
         }
 
 
-        function downloadData ($locale) {
+        function baixarDados ($estado) {
             $jsonString = "";
 
-            $site = file_get_contents("https://queimadas.dgi.inpe.br/queimadas/portal-static/csv_estatisticas/historico_estado_$locale.csv");
+            $site = file_get_contents("https://queimadas.dgi.inpe.br/queimadas/portal-static/csv_estatisticas/historico_estado_$estado.csv");
             $site = substr($site, 1);
             $site = rtrim($site);
             $site = (explode(chr(10),$site));
-            $jsonString .= "\n\"$locale\" : {\n \"ANO\" : {";
+            $jsonString .= "\n\"$estado\" : {\n \"ANO\" : {";
             $count = 1;
             while ($count < sizeOf($site)) {
                 $jsonString .= "\n    \"".explode(",",$site[$count])[0]."\"";
@@ -83,7 +83,7 @@
             $jsonString = rtrim( $jsonString, ", ");
             $jsonString .= "\n  }\n}";
 
-            $this->createCache($locale,$jsonString);
+            $this->createCache($estado,$jsonString);
         }        
     }
 ?>
