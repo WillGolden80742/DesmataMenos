@@ -34,10 +34,9 @@
 
         ::-webkit-scrollbar-thumb {
             background:white;
+            border:solid 3px #414C6B80;
             border-radius:10px;
-            border:solid 1px rgba(0,0,0,0.25);
-            background:rgba(0,0,0,0.125);
-        }    
+        }   
  
         ::-webkit-scrollbar-track {
             border-radius:10px;
