@@ -276,7 +276,7 @@ function selectMapRefreshTable (uf,dado) {
             }
             document.getElementById("styleTable").innerHTML+="#"+itemline+" path { fill:#414C6B !important; cursor:pointer  } #"+itemline+" .circle { fill:#2d3038 !important; cursor:pointer }";
         });   
-        document.getElementById("styleTable").innerHTML+="#"+uf+" path { fill:#1a73e8 !important; cursor:pointer }";
+        document.getElementById("styleTable").innerHTML+="#"+uf+" path, #"+uf+" .circle { fill:#1a73e8 !important; cursor:pointer }";
     }
 }
 
