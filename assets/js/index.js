@@ -1,11 +1,9 @@
-var mapas = "";
 var urlCharts = "";
 var estado = "";
 var estadoDefault = "amazonas";
 var ufJSON = "";
 var moreAndLess = "";
 var defaultFontSize = $('*').css('font-size');
-var tableCache = "";
 
 function init (url) {
     select ();
@@ -16,7 +14,7 @@ function init (url) {
 } 
 
 
-function dados(value) {
+function dados() {
     select_dado = document.getElementById('select_dados').value;
     var estado = document.getElementById("select_state").value;
 

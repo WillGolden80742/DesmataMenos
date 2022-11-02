@@ -24,7 +24,7 @@
     </style>
     <script>
         <?php 
-            $lines_array = file("assets/js/javascript.js");
+            $lines_array = file("assets/js/index.js");
             foreach($lines_array as $line) {
                 echo $line;
             }
