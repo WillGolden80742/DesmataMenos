@@ -6,7 +6,7 @@
             $this->conFactoryPDO = new ConnectionFactoryPDO();
         }   
   
-        function createCache ($locale,$json) {
+        function criarCache ($locale,$json) {
             $datetime = new DateTime();
             $dateFormated = $datetime->format('d/m/Y');
 
@@ -22,7 +22,7 @@
             $connection->execute($query);
         }
 
-        function hasCacheDate ($date,$locale) {
+        function verificarCache ($date,$locale) {
             // Recomendado uso de prepare statement 
             $connection = $this->conFactoryPDO;
             $query = $connection->query("SELECT count(dateInsertion) as countValues FROM JSONCache WHERE locale = :locale AND dateInsertion=:dateInsertion");

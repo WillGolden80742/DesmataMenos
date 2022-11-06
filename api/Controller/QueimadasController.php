@@ -7,12 +7,12 @@
             $this->queimadas = new QueimadasModel();
         }
 
-        function createCache ($locale,$json) {
-            $this->queimadas->createCache($locale,$json);
+        function criarCache ($locale,$json) {
+            $this->queimadas->criarCache($locale,$json);
         }
 
-        function hasCacheDate ($date,$locale) {
-            $result = $this->queimadas->hasCacheDate($date,$locale);
+        function verificarCache  ($date,$locale) {
+            $result = $this->queimadas->verificarCache ($date,$locale);
             foreach ($result as $r) {
                 return $r;
             }
@@ -51,14 +51,14 @@
             }
         }
 
-        function formatedDate ()  {
+        function dataFormatada ()  {
             $datetime = new DateTime();
-            $formatedDate = $datetime->format('d/m/Y');
-            return $formatedDate;
+            $dataFormatada = $datetime->format('d/m/Y');
+            return $dataFormatada;
         }
 
 
-        function downloadData ($locale) {
+        function baixarDados ($locale) {
             $jsonString = "";
 
             $site = file_get_contents("https://queimadas.dgi.inpe.br/queimadas/portal-static/csv_estatisticas/historico_estado_$locale.csv");
@@ -83,7 +83,7 @@
             $jsonString = rtrim( $jsonString, ", ");
             $jsonString .= "\n  }\n}";
 
-            $this->createCache($locale,$jsonString);
+            $this->criarCache($locale,$jsonString);
         }        
     }
 ?>

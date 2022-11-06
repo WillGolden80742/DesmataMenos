@@ -15,12 +15,12 @@
 
     $json = "{\"LOCALE\" : {";
     foreach ($locales as $locale) {
-        $queimadasCache = $queimadas->hasCacheDate($queimadas->formatedDate(),$locale);
+        $queimadasCache = $queimadas->verificarCache($queimadas->dataFormatada(),$locale);
     
         if ($queimadasCache) {
             $json .= $queimadas->cache($locale);
         } else {
-            $jsonString = $queimadas->downloadData($locale);
+            $jsonString = $queimadas->baixarDados($locale);
             $json .= $queimadas->cache($locale);
         }
         $json.=",";

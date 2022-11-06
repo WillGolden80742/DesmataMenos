@@ -1,18 +1,19 @@
 var urlCharts = "";
 var estado = "";
-var estadoDefault = "amazonas";
+var estadoPadrao = "amazonas";
 var ufJSON = "";
 var moreAndLess = "";
 var defaultFontSize = $('*').css('font-size');
 
+
 function init (url) {
     select ();
     tabela ();
-    $('#'+estadoDefault+' path').css('fill:','#1a73e8');
-
+    $('#'+estadoPadrao+' path').css('fill:','#1a73e8');
     urlCharts = url+"api/grafico";
-} 
-
+}
+ 
+// --------------- MÓDULO DE INICIALIZAÇÃO 
 
 function dados() {
     select_dado = document.getElementById('select_dados').value;
@@ -62,7 +63,7 @@ function select () {
             }
             ufJSON = locale;
             Object.keys(locale[localeItem]).forEach(function(item) { 
-                if (item == estadoDefault) {
+                if (item == estadoPadrao) {
                     selected = "selected=\"selected\"";
                 } else {
                     selected = "";
@@ -73,6 +74,8 @@ function select () {
         document.getElementById("select_state").innerHTML = options;
     });
 }
+
+// --------------------------- BAIXAR ARQUIVOS -----------------------------------------
 
 function save () {
     format = document.getElementById('select_save').value;
@@ -108,6 +111,8 @@ function file (value) {
     document.getElementById("select_save").selectedIndex = 0;
 }
 
+// --------------------------- GRÁFICO --------------------------------------------
+
 function chart () {
     estado = document.getElementById('select_state').value;
     document.getElementById("desmatamentoTable").innerHTML = "<iframe src=\""+urlCharts+"/locale/"+estado+"\" style=\"border:none;\" width=\"100%\" height=\"100%\" ></iframe> ";
@@ -126,6 +131,9 @@ function changeTableTextSize (value) {
         document.getElementById('tableStyle').innerHTML="td, th { font-size:"+(fontSize-10)+"px;)}";
     }
 }
+
+// --------------------------- TABELA --------------------------------------------
+
 
 function setTable (table) {
     moreAndLess="<div class=\"buttonIncrease\" id=\"buttonIncrease\"><div id=\"more\" onclick=\"changeTableTextSize(true);\"></div><div id=\"less\" onclick=\"changeTableTextSize(false);\"></div></div>";
@@ -186,7 +194,7 @@ function tabela () {
     try {
         estado = document.getElementById('select_state').value;
     } catch (error) {
-        estado = estadoDefault;
+        estado = estadoPadrao;
     } 
     $.ajax({
         url: 'api/queimadas.php?',
@@ -278,6 +286,8 @@ function selectMapRefreshTable (uf,dado) {
     }
 }
 
+//------------------ E-MAIL -------------------------------------
+
 function mailFrame(value) {
     html = "<html> <head></head> <body>#body</body> </html>";
     if (value) {
@@ -309,6 +319,7 @@ function getTitle (locale) {
         return ufJSON['BIOMA'][locale];    
     }
 }
+
 
 function enviarEmail () {
     var locale = document.getElementById('select_state').value;
