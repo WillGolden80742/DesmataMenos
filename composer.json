@@ -1,6 +1,0 @@
-{
-    "require": {
-        "phpmailer/phpmailer": "^6.6",
-        "spiritix/html-to-pdf": "^2.0"
-    }
-}
