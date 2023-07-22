@@ -11,8 +11,9 @@
             $dateFormated = $datetime->format('d/m/Y');
 
             $connection = $this->conFactoryPDO;
-            $query = $connection->query("DELETE FROM JSONCache WHERE locale =:locale");
+            $query = $connection->query("DELETE FROM JSONCache WHERE locale =:locale AND dateInsertion !=:dateInsertion");
             $query->bindParam(':locale',$locale, PDO::PARAM_STR);
+            $query->bindParam(':dateInsertion',$dateFormated, PDO::PARAM_STR);
             $connection->execute($query);
 
             $query = $connection->query("INSERT INTO JSONCache (locale,jsonContent,dateInsertion) VALUES (:locale,:jsonContent,:dateInsertion)");
