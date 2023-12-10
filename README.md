@@ -20,10 +20,10 @@ O DesmataMenos é um sistema para acompanhar dados sobre queimadas no Brasil. El
 
 A API provê os seguintes endpoints:
 
-- `/queimadas` - Retorna dados agregados do Brasil
-- `/queimadas/locale/{estado}` - Retorna dados por estado 
-- `/queimadas/locale/{região}` - Retorna dados por região
-- `/queimadas/locale/{bioma}` - Retorna dados por bioma
+- `api/queimadas` - Retorna dados agregados do Brasil
+- `api/queimadas/locale/{estado}` - Retorna dados por estado 
+- `api/queimadas/locale/{região}` - Retorna dados por região
+- `api/queimadas/locale/{bioma}` - Retorna dados por bioma
 
 Parâmetros disponíveis:
 
