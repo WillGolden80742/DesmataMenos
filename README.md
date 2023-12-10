@@ -21,8 +21,11 @@ Compares data between years, highlighting maximums and minimums
 The API provides the following endpoints:
 
 -api/queimadas - Returns aggregated data for Brazil
+
 -api/queimadas/locale/{estado} - Returns data by state
+
 -api/queimadas/locale/{região} - Returns data by region
+
 -api/queimadas/locale/{bioma} - Returns data by biome
 
 Available parameters:
