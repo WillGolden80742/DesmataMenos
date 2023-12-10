@@ -6,7 +6,7 @@ O DesmataMenos é um sistema para acompanhar dados sobre queimadas no Brasil. El
 
 - Consulta de dados de queimadas por estado, região ou bioma
 - Filtragem por ano e mês
-- Retorno de dados em JSON ou CSV
+- Retorno de dados em JSON
 - Front-end com mapa, tabelas e gráficos
 - Exibe mapa do Brasil para seleção do estado/região/bioma 
 - Seleção entre visualizar dados em tabela ou gráfico
