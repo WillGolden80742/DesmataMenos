@@ -29,7 +29,6 @@ The API provides the following endpoints:
 Available parameters:
 
 - ano - Filters by year
-
 - mes - Filters by month
 
 ## Technologies
