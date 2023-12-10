@@ -88,12 +88,13 @@ ano - Filters by year
 mes - Filters by month
 ## Technologies
 
-PHP
-MySQL
-JavaScript
-Chart.js (charts)
-SVG
-HTML/CSS
+- PHP
+- MySQL
+- JavaScript
+- Chart.js (charts)
+- SVG
+- HTML/CSS
+
 ## Installation
 
 Clone the repository
