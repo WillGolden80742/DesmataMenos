@@ -8,7 +8,7 @@ DesmataMenos is a system that tracks data on fires in Brazil. It provides an API
 - Filter by year and month
 - Return data in JSON format
 - Front-end with a map, tables, and charts
-- Displays a map of Brazil for selecting the state/region/biome
+- Displays a map of Brazil for selecting the state
 - Allows users to choose between viewing data in a table or chart
 - Downloads the latest data from the INPE API
 - Stores data in cache for better performance
