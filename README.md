@@ -100,9 +100,6 @@ Clone the repository
 Import the SQL database
 Configure database access in the api/.env file
 Access the project root directory on your web server
-## License
-
-This project is licensed under the MIT License. See the LICENSE: LICENSE file for more details.
 
 ## Credits
 
