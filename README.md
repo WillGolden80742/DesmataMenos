@@ -55,4 +55,4 @@ Available parameters:
 
 DesmataMenos was created by [Will Golden](https://github.com/willgolden80742/).
 
-Fire data by [INPE].
+Fire data by [INPE](https://queimadas.dgi.inpe.br/queimadas/portal-static/estatisticas_estados/).
