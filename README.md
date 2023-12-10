@@ -43,7 +43,7 @@ Parâmetros disponíveis:
 
 1. Clone o repositório
 2. Importe o banco de dados SQL
-3. Configure o acesso ao banco no arquivo `.env`
+3. Configure o acesso ao banco no arquivo `api/.env`
 4. Acesse a pasta raiz do projeto no seu servidor web
 
 ## Licença
