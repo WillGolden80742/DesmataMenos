@@ -33,6 +33,4 @@ Este projeto está licenciado sob a Licença MIT - consulte o arquivo [LICENSE](
 
 ## Créditos
 
-DesmataMenos foi criado por [Will Golden].
-
 Dados de queimadas pelo [INPE].
