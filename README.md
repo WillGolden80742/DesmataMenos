@@ -53,6 +53,6 @@ Available parameters:
 
 ## Credits
 
-DesmataMenos was created by [Will Golden].
+DesmataMenos was created by [Will Golden](https://github.com/willgolden80742/).
 
 Fire data by [INPE].
