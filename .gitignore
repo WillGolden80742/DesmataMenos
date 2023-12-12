@@ -1,3 +1,4 @@
 /vendor
 api/.env
 api/teste.php
+.env

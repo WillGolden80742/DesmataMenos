@@ -4,94 +4,93 @@
     $jsonString = "{\"UF\" : {                                             
             \"\":
             \"Todos estados\",                 
-            \"acre\":
+            \"estado_acre\":
             \"Acre\" ,    
-            \"alagoas\":
+            \"estado_alagoas\":
             \"Alagoas\" ,      
-            \"amapa\":
+            \"estado_amapa\":
             \"Amapá\" ,    
-            \"amazonas\":
+            \"estado_amazonas\":
             \"Amazonas\" ,    
-            \"bahia\":
+            \"estado_bahia\":
             \"Bahia\" ,    
-            \"ceara\":
+            \"estado_ceara\":
             \"Ceará\" ,    
-            \"distrito_federal\":
+            \"estado_distrito_federal\":
             \"Distrito Federal\" ,    
-            \"espirito_santo\":
+            \"estado_espirito_santo\":
             \"Espírito Santo\" ,    
-            \"goias\":
+            \"estado_goias\":
             \"Goiás\" ,    
-            \"maranhao\":
+            \"estado_maranhao\":
             \"Maranhão\" ,     
-            \"mato_grosso\":
+            \"estado_mato_grosso\":
             \"Mato Grosso\" ,    
-            \"mato_grosso_do_sul\":
+            \"estado_mato_grosso_do_sul\":
             \"Mato Grosso do Sul\" ,   
-            \"minas_gerais\":
+            \"estado_minas_gerais\":
             \"Minas Gerais\" ,   
-            \"para\":
+            \"estado_para\":
             \"Pará\" ,    
-            \"paraiba\":
+            \"estado_paraiba\":
             \"Paraíba\" ,    
-            \"parana\":
+            \"estado_parana\":
             \"Paraná\" ,    
-            \"pernambuco\":
+            \"estado_pernambuco\":
             \"Pernambuco\" ,    
-            \"piaui\":
+            \"estado_piaui\":
             \"Piauí\" ,    
-            \"rio_de_janeiro\":
+            \"estado_rio_de_janeiro\":
             \"Rio de Janeiro\" ,   
-            \"rio_grande_do_norte\":
+            \"estado_rio_grande_do_norte\":
             \"Rio Grande do Norte\" ,   
-            \"rio_grande_do_sul\":
+            \"estado_rio_grande_do_sul\":
             \"Rio Grande do Sul\" ,   
-            \"rondonia\":
+            \"estado_rondonia\":
             \"Rondônia\" ,    
-            \"roraima\":
+            \"estado_roraima\":
             \"Roraima\" ,    
-            \"santa_catarina\":
+            \"estado_santa_catarina\":
             \"Santa Catarina\" ,    
-            \"sao_paulo\":
+            \"estado_sao_paulo\":
             \"São Paulo\" ,    
-            \"sergipe\":
+            \"estado_sergipe\":
             \"Sergipe\" , 
-            \"tocantins\":
+            \"estado_tocantins\":
             \"Tocantins\"     
         }, 
         \"REGIAO\" : {
-            \"norte\":
+            \"regiao_norte\":
             \"Região Norte\" ,   
-            \"nordeste\":
+            \"regiao_nordeste\":
             \"Região Nordeste\" ,      
-            \"centro-oeste\":
+            \"regiao_centro-oeste\":
             \"Região Centro-oeste\" ,     
-            \"sul\":
+            \"regiao_sul\":
             \"Região Sul\" ,
-            \"sudeste\":
+            \"regiao_sudeste\":
             \"Região Sudeste\" , 
-            \"amazonia_legal\":
+            \"regiao_amazonia_legal\":
             \"Amazônia Legal\" ,  
-            \"vale_do_paraiba\":
+            \"regiao_vale_do_paraiba\":
             \"Vale do Paraíba\" ,   
-            \"map\":
+            \"regiao_map\":
             \"MAP\"              
         }, 
         \"BIOMA\" : {
-            \"caatinga\":
+            \"bioma_caatinga\":
             \"Caatinga\" ,        
-            \"cerrado\":
+            \"bioma_cerrado\":
             \"Cerrado\" ,    
-            \"pantanal\":
+            \"bioma_pantanal\":
             \"Pantanal\" ,   
-            \"pampa\":
+            \"bioma_pampa\":
             \"Pampa\",
-            \"amazonia\":
+            \"bioma_amazonia\":
             \"Amazônia\", 
-            \"mata_atlantica\":
+            \"bioma_mata_atlantica\":
             \"Mata Atlântica\" 
         }
     }";
     echo $jsonString;
-    
 ?>

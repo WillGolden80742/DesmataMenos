@@ -1,6 +1,6 @@
 var urlCharts = "";
 var estado = "";
-var estadoPadrao = "amazonas";
+var estadoPadrao = "estado_amazonas";
 var ufJSON = "";
 var moreAndLess = "";
 var defaultFontSize = $('*').css('font-size');
@@ -10,7 +10,7 @@ function init (url) {
     select ();
     tabela ();
     $('#'+estadoPadrao+' path').css('fill:','#1a73e8');
-    urlCharts = url+"api/grafico";
+    urlCharts = url+"api/charts.php";
 }
  
 // --------------- MÓDULO DE INICIALIZAÇÃO 
@@ -39,7 +39,7 @@ function dados() {
 
 function select () {
     $.ajax({
-        url: 'api/locale',
+        url: 'api/locale.php',
         method: 'GET',
         dataType: 'html'
     }).done(function(text) { 
@@ -115,7 +115,7 @@ function file (value) {
 
 function chart () {
     estado = document.getElementById('select_state').value;
-    document.getElementById("desmatamentoTable").innerHTML = "<iframe src=\""+urlCharts+"/locale/"+estado+"\" style=\"border:none;\" width=\"100%\" height=\"100%\" ></iframe> ";
+    document.getElementById("desmatamentoTable").innerHTML = "<iframe src=\""+urlCharts+"?state="+estado+"\" style=\"border:none;\" width=\"100%\" height=\"100%\" ></iframe> ";
 }
 
 function loading () {
@@ -145,7 +145,7 @@ function tabelaTodosEstado () {
     var table = "";
     var thStyle = "style=\"background-color:rgba(65,76,107,0.25);\"";
     $.ajax({
-        url: 'api/queimadas/',
+        url: 'api/queimadas.php',
         method: 'GET',
         dataType: 'html'
     }).done(function(text) { 
@@ -202,6 +202,7 @@ function tabela () {
         data: {state: estado},
         dataType: 'html'
     }).done(function(text) { 
+        console.log ( JSON.parse(text));
         var text = JSON.parse(text)['LOCALE'][estado];
         var table = "<table >\n<thead>";
         var thStyle = "style=\"background-color:rgba(65,76,107,0.25);\"";

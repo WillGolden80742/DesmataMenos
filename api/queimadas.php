@@ -10,7 +10,7 @@
     if (isset($_GET['state']) && strcmp($_GET['state'],"") !== 0) {
         $locales = explode(",",$_GET['state']);
     } else {
-        $locales = explode(",","acre,alagoas,amapa,amazonas,bahia,ceara,distrito_federal,espirito_santo,goias,maranhao,mato_grosso,mato_grosso_do_sul,minas_gerais,para,paraiba,parana,pernambuco,piaui,rio_de_janeiro,rio_grande_do_norte,rio_grande_do_sul,rondonia,roraima,santa_catarina,sao_paulo,sergipe,tocantins");
+        $locales = explode(",","estado_acre,estado_alagoas,estado_amapa,estado_amazonas,estado_bahia,estado_ceara,estado_distrito_federal,estado_espirito_santo,estado_goias,estado_maranhao,estado_mato_grosso,estado_mato_grosso_do_sul,estado_minas_gerais,estado_para,estado_paraiba,estado_parana,estado_pernambuco,estado_piaui,estado_rio_de_janeiro,estado_rio_grande_do_norte,estado_rio_grande_do_sul,estado_rondonia,estado_roraima,estado_santa_catarina,estado_sao_paulo,estado_sergipe,estado_tocantins");
     }
 
     $json = "{\"LOCALE\" : {";
@@ -25,6 +25,7 @@
         }
         $json.=",";
     }
+    
     $json=rtrim($json,",");
     $json.="}}";
 

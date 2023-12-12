@@ -60,8 +60,7 @@
 
         function baixarDados ($locale) {
             $jsonString = "";
-
-            $site = file_get_contents("https://queimadas.dgi.inpe.br/queimadas/portal-static/csv_estatisticas/historico_estado_$locale.csv");
+            $site = file_get_contents("http://terrabrasilis.dpi.inpe.br/queimadas/situacao-atual/media/".explode("_",$locale)[0]."/csv_estatisticas/historico_$locale.csv");
             $site = substr($site, 1);
             $site = rtrim($site);
             $site = (explode(chr(10),$site));
