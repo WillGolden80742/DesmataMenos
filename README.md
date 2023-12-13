@@ -26,6 +26,7 @@ DesmataMenos is a system that tracks data on fires in Brazil. It provides an API
 - HTML/CSS
 
 ## Endpoints
+
 The API provides the following endpoints:
 - api/queimadas - Returns aggregated data for Brazil
 - api/queimadas/locale/{state_name_of_estate} - Returns data by state
