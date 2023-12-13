@@ -4,6 +4,10 @@
 </FilesMatch>
 
 RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php?url=$1 [NC,L]
+RewriteBase /DesmataMenos/api/
+
+# Redirecionar api/queimadas/locale/{state} para queimadas.php?state={state}
+RewriteRule ^queimadas/locale/([^/]+)$ queimadas.php?state=$1 [L]
+
+# Redirecionar api/locale para locale.php?state={state}
+RewriteRule ^locale$ locale.php [L]
