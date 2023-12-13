@@ -202,7 +202,6 @@ function tabela () {
         data: {state: estado},
         dataType: 'html'
     }).done(function(text) { 
-        console.log ( JSON.parse(text));
         var text = JSON.parse(text)['LOCALE'][estado];
         var table = "<table >\n<thead>";
         var thStyle = "style=\"background-color:rgba(65,76,107,0.25);\"";
