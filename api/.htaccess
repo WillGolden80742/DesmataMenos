@@ -9,5 +9,8 @@ RewriteBase /DesmataMenos/api/
 # Redirecionar api/queimadas/locale/{state} para queimadas.php?state={state}
 RewriteRule ^queimadas/locale/([^/]+)$ queimadas.php?state=$1 [L]
 
-# Redirecionar api/locale para locale.php?state={state}
+# Redirecionar api/queimadas/ para queimadas.php (sem parâmetro state)
+RewriteRule ^queimadas/$ queimadas.php?state= [L]
+
+# Redirecionar api/locale para locale.php (sem parâmetro state)
 RewriteRule ^locale$ locale.php [L]
