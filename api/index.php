@@ -130,40 +130,45 @@
 
         $currentDirectory = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
         $arrDirectory = explode("/",$currentDirectory);
-        $sizeArrDirectory = count ($arrDirectory)-1;
+        $sizeArrDirectory = count($arrDirectory)-1;
         $currentDirectory = str_replace($arrDirectory[$sizeArrDirectory],"",$currentDirectory);
 
-        $urlArr = explode("/",$_GET['url']);
-        $count = 0;
-        
-        $urlArr[0]=strtolower($urlArr[0]);
-        $urlArr[1]=strtolower($urlArr[1]);
-        $urlArr[2]=strtolower($urlArr[2]);
-        $urlArr[3]=strtolower($urlArr[3]);
+        if(isset($_GET['url'])) {
+            $urlArr = explode("/", $_GET['url']);
 
-        switch ($urlArr[0]) {
-            case "grafico" :
-                $urlArr[0]='charts';    
-                redirect($currentDirectory,$urlArr);
-                break;  
-            case "locale" :
-                $urlArr[0]='locale';    
-                redirect($currentDirectory,$urlArr);
-                break;    
-            case "queimadas" :
-                redirect($currentDirectory,$urlArr);     
-                break;   
-            case "mapas" :
-                redirect($currentDirectory,$urlArr);     
-                break;                 
-        }
+            // Verificar se existem elementos suficientes em $urlArr
+            if(count($urlArr) >= 4) {
+                $urlArr[0] = strtolower($urlArr[0]);
+                $urlArr[1] = strtolower($urlArr[1]);
+                $urlArr[2] = strtolower($urlArr[2]);
+                $urlArr[3] = strtolower($urlArr[3]);
 
-        function redirect ($directory,$url) {
-            $urlStr="";
-            $urlStr=$url[0].".php?state=".$url[2];
+                switch ($urlArr[0]) {
+                    case "grafico" :
+                        $urlArr[0] = 'charts';    
+                        redirect($currentDirectory, $urlArr);
+                        break;  
+                    case "locale" :
+                        $urlArr[0] = 'locale';    
+                        redirect($currentDirectory, $urlArr);
+                        break;    
+                    case "queimadas" :
+                        redirect($currentDirectory, $urlArr);     
+                        break;   
+                    case "mapas" :
+                        redirect($currentDirectory, $urlArr);     
+                        break;                 
+                }
+            }
+        } 
+
+        function redirect($directory, $url) {
+            $urlStr = "";
+            $urlStr = $url[0].".php?state=".$url[2];
             header("Location: $directory".$urlStr);
         }
 
     ?>
+
 </body>   
 </html>

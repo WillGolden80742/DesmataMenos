@@ -1,7 +1,11 @@
 <?php
     include 'Model/QueimadasModel.php';
 
+
     class QueimadasController {
+
+        private $conFactory;
+        private $queimadas;
         function __construct() {
             $this->conFactory = new ConnectionFactoryPDO();
             $this->queimadas = new QueimadasModel();
@@ -13,10 +17,12 @@
 
         function verificarCache  ($date,$locale) {
             $result = $this->queimadas->verificarCache ($date,$locale);
+            $hasCache = "";
             foreach ($result as $r) {
+                $hasCache = $r;
                 return $r;
             }
-            if (strcmp($r,"1")==0) {
+            if (strcmp($hasCache,"1")==0) {
                 return true;
             } else {
                 return false;  
@@ -60,7 +66,7 @@
 
         function baixarDados ($locale) {
             $jsonString = "";
-            $site = file_get_contents("http://terrabrasilis.dpi.inpe.br/queimadas/situacao-atual/media/".explode("_",$locale)[0]."/csv_estatisticas/historico_$locale.csv");
+            $site = file_get_contents("https://terrabrasilis.dpi.inpe.br/queimadas/situacao-atual/media/".explode("_",$locale)[0]."/csv_estatisticas/historico_$locale.csv");
             $site = substr($site, 1);
             $site = rtrim($site);
             $site = (explode(chr(10),$site));
